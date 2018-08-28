@@ -2,9 +2,10 @@
 
 ### Comments
 
-`# comment</br>
-'''multiline comment'''</br>  
-"""multiline comment"""</br>  `
+```# comment
+'''multiline comment''' 
+"""multiline comment"""
+```
   
 ### format characters  
 %s - string  
