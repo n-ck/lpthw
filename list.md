@@ -45,10 +45,15 @@ python ex13.py first second third
 
 ## Reading files
 
-open(filename)  
+open(filename) - creates object of the file, takes filename as a parameter  
+open(filename).read() - returns the contents of the file  
+open(filename, w) - takes filename parameter and open it in 'writemode' (r, 'readmode' is the default)  
+.truncate() - Truncates the file size (shorten by cutting off)  
+.write() - Overwrite the content of a file  
+
+*Left off with the Python list at exercise 17*
 
 ### Functions
-
 
 
 *Left off at page 83/101[PDF] - Exercise 24*
