@@ -6,6 +6,27 @@
 '''multiline comment''' 
 """multiline comment"""
 ```
+
+## Variables
+
+```
+cars = 10  
+car = "bmw"  
+half_car = 0.5 # Float  
+```
+
+## Print
+
+```
+print "Enter string here"
+or 
+car = "audi"
+print car
+or
+print """
+Enter your multiline string here
+"""
+```
   
 ### format characters  
 %s - string  
@@ -19,8 +40,6 @@ print "Hi %s I'm the %s script" % (username, script)
 ```
   
 More about [format characters](https://docs.python.org/2.4/lib/typesseq-strings.html)
-
-4.0 floating point number
 
 ### Escape sequences
 
