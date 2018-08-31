@@ -90,6 +90,6 @@ def functionname(arg1, arg2):
 	print "Hello %s, do stuff here %s" % (arg1, arg2)
 ```
 
-*Left off with the Python list at exercise 17*
+*Left off with the Python list at exercise 27*
 
 *Left off at page 83/101[PDF] - Exercise 24*
