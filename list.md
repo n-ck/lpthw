@@ -57,22 +57,37 @@ var = raw_input() - assigns raw input to a variable
 
 ## argv
 
+```
 from sys import argv
 script, first, second, third = argv  
 
+running this in the terminal:
 python ex13.py first second third
+
+passes the values entered in the terminal as values for the arguments (variables) in argv
+```
 
 ## Reading files
 
+```
 open(filename) - creates object of the file, takes filename as a parameter  
-open(filename).read() - returns the contents of the file  
-open(filename, w) - takes filename parameter and open it in 'writemode' (r, 'readmode' is the default)  
-.truncate() - Truncates the file size (shorten by cutting off)  
-.write() - Overwrite the content of a file  
+open(filename, w) - takes filename parameter and open it in 'writemode' (r, 'readmode' is the default)
+.read() - returns the contents of a file
+.readline() - Reads jus tone line of a text file
+.truncate() - Empties the file 
+.write(stuff) - Overwrite the content of a file 
+.close() - Closes the filename
+
+len() - gets the length of a string you pass and returns it as a number
+```
 
 *Left off with the Python list at exercise 17*
 
 ### Functions
 
+```
+def functionname(arg1, arg2):
+	print "Hello %s, do stuff here %s" % (arg1, arg2)
+```
 
 *Left off at page 83/101[PDF] - Exercise 24*
