@@ -139,6 +139,27 @@ not (False and False) | True
 0 == 1 | False
 0 == 0 | True
 
+## Arithemic operators
+
+```
++ addition
+- subtraction
+* multiplication
+/ division
+% modulus
+*** exponent
+// floor division
+```
+
+## Comparision operators
+```
+== equal to
+!= not equal to
+> greather than
+< smaller than
+>= greater than or equal to
+<= smaller than or equal to
+```
 
 *Left off with the Python list at exercise 27*
 
