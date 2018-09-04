@@ -161,6 +161,19 @@ not (False and False) | True
 <= smaller than or equal to
 ```
 
+## Lists
+
+### List operators
+.append() - Add an eitem to the end of the list
+.extend() - Extend a list to the end of a list
+.insert(i, x) - Inserts x at position i 
+.remove(x) - Removes items in the list with the value x 
+*More: https://docs.python.org/2/tutorial/datastructures.html*
+
+Range function: generates a list of numbers  
+range([start], stop[, step])  
+range(0, 100, 2) - generates a list from 0 to 100 with increments of 2  
+
 *Left off with the Python list at exercise 27*
 
 *Left off at page 83/101[PDF] - Exercise 24*
