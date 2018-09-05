@@ -174,6 +174,12 @@ Range function: generates a list of numbers
 range([start], stop[, step])  
 range(0, 100, 2) - generates a list from 0 to 100 with increments of 2  
 
+## While loops
+
+When a loop runs, it goes through its block of code, and at the end it jumps back to the top.
+
+A for-loop can only iterate (loop) “over” collections of things. A while-loop can do any kind of iteration (looping) you want
+
 *Left off with the Python list at exercise 27*
 
 *Left off at page 83/101[PDF] - Exercise 24*
