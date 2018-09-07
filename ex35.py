@@ -1,6 +1,7 @@
 from sys import exit
 
 def gold_room():
+	'''This is the Gold Room level (second level) of the game'''
 	print "This room is full of gold. How much do you take?"
 
 	next = raw_input("> ")
@@ -16,6 +17,7 @@ def gold_room():
 		dead("You greedy bastard!")
 
 def bear_room():
+	'''This is the first level of the game if you choose the left door'''
 	print "There is a bear here."
 	print "The bear has a bunch of honey."
 	print "The fat bear is in fron of another door"
@@ -38,6 +40,7 @@ def bear_room():
 			print "I got no idea what that means."
 
 def cthulhu_room():
+	'''First level of the game if you choose the right door'''
 	print "Here you see the great evil Cthulhu."
 	print "He, it, whatever stares at you and you go insane."
 	print "Do you flee for your life or eat your head?"
@@ -50,13 +53,15 @@ def cthulhu_room():
 		dead("Well that was tasty!")
 	else:
 		cthulhu_room()
-		
+
 
 def dead(why):
+	'''This function exits the game in terminal if you're dead'''
 	print why, "Good job!"
 	exit(0)
 
 def start():
+	'''This function starts the game off'''
 	print "you are in a dark room"
 	print "There is a door to your right and left"
 	print "Which one do you take?"
@@ -70,5 +75,5 @@ def start():
 	else:
 		dead("You stumble around the room until you starve.")
 
-
+## This calls the start function to start the game.
 start()
