@@ -1,10 +1,59 @@
 from sys import exit
 
 
+def start():
+	'''This function starts off the game'''
+
+	print "This script calculates return on savings or investment"
+	print "Enter the amount you want to save or invest"
+
+	amount = raw_input("> ")
+	dollars = int(amount)
+
+	secondstep(dollars)
+
+	# if dollars < 500:
+	# 	print "Dollar amount is too low, try again"
+	# 	amount = raw_input("> ")
+	# 	dollars = int(amount)
+	# else:
+	# 	saveorinvest()
+
+def secondstep(dollars):
+
+	if dollars < 500:
+		kill("Save up more money.")
+	else:
+		saveorinvest()
+
+
+def saveorinvest():
+	'''This function decides if you want to save or invest'''
+
+	print "Do you want to save or invest your money?"
+
+	decision = raw_input("save or invest: ")
+
+	if decision == save:
+		roi_save()
+	elif decision == invest:
+		roi_invest()
+	else:
+		kill("Whatever")
+
+# def roi_save():
+
+# def roi_invest():
+
+
 def kill(why):
 	'''This function exits the game in terminal if you're dead'''
 	print why, "Start over again"
 	exit(0)
+
+
+start()
+
 
 """
 GAME PLANNING:
