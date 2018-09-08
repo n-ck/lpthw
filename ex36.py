@@ -12,22 +12,17 @@ def start():
 
 	secondstep(dollars)
 
-	# if dollars < 500:
-	# 	print "Dollar amount is too low, try again"
-	# 	amount = raw_input("> ")
-	# 	dollars = int(amount)
-	# else:
-	# 	saveorinvest()
 
 def secondstep(dollars):
+	'''This function checks if the investment amount is enough'''
 
 	if dollars < 500:
 		kill("Save up more money.")
 	else:
-		saveorinvest()
+		saveorinvest(dollars)
 
 
-def saveorinvest():
+def saveorinvest(dollars):
 	'''This function decides if you want to save or invest'''
 
 	print "Do you want to save or invest your money?"
@@ -35,15 +30,17 @@ def saveorinvest():
 	decision = raw_input("save or invest: ")
 
 	if decision == save:
-		roi_save()
+		roi_save(dollars)
 	elif decision == invest:
-		roi_invest()
+		roi_invest(dollars)
 	else:
 		kill("Whatever")
 
-# def roi_save():
+# def roi_save(dollars):
+	# roilist = [1, 3, 5]
 
-# def roi_invest():
+# def roi_invest(dollars):
+	# roilist = [5, 10, 15]
 
 
 def kill(why):
