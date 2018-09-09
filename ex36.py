@@ -29,18 +29,31 @@ def saveorinvest(dollars):
 
 	decision = raw_input("save or invest: ")
 
-	if decision == save:
+	if decision == "save":
+		# print "You received 1% interest"
+		# print dollars * 1.01
 		roi_save(dollars)
-	elif decision == invest:
+	elif decision == "invest":
+		# print "You received 5% interest"
+		# print dollars * 1.05
 		roi_invest(dollars)
 	else:
 		kill("Whatever")
 
-# def roi_save(dollars):
-	# roilist = [1, 3, 5]
+def roi_save(dollars):
+	'''This function calulcates roi on savings'''
+	roilist = [1.01, 1.03, 1.05]
 
-# def roi_invest(dollars):
-	# roilist = [5, 10, 15]
+	for roi in roilist:
+		print dollars * roi
+
+
+def roi_invest(dollars):
+
+	roilist = [1.05, 1.1, 1.15]
+
+	for roi in roilist:
+		print dollars * roi
 
 
 def kill(why):
