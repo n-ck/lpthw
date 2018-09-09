@@ -27,18 +27,47 @@ def saveorinvest(dollars):
 
 	print "Do you want to save or invest your money?"
 
-	decision = raw_input("save or invest: ")
+	decision = raw_input("> ")
 
 	if decision == "save":
 		# print "You received 1% interest"
 		# print dollars * 1.01
-		roi_save(dollars)
+		choice = "save"
+		selectyears(dollars, choice)
 	elif decision == "invest":
 		# print "You received 5% interest"
 		# print dollars * 1.05
-		roi_invest(dollars)
+		choice = "invest"
+		selectyears(dollars, choice)
 	else:
 		kill("Whatever")
+
+
+def selectyears(dollars, choice):
+
+	print "Choose the term in years"
+
+	decision = raw_input("> ")
+	years = int(decision)
+
+	if years < 2:
+		kill("Th term is too short")
+	else:
+		roicalculator(dollars, choice, years)
+
+def roicalculator(dollars, choice, years):
+
+	savings = dollars*(1.01)**(1.01*years)
+	investment = dollars*(1.10)**(1.10*years)
+
+	if choice == "save":
+		print "Based on a 1% interest rate,"
+		print "You'd save %s" % savings
+		print "If you invested the money you would have %s" % investment
+	elif choice == "invest":
+		print "Based on a 10% interest rate,"
+		print "Your roi would be %s" % investment
+		print "If you saved the money you would have %s" % savings
 
 def roi_save(dollars):
 	'''This function calulcates roi on savings'''
