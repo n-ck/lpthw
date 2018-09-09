@@ -57,32 +57,26 @@ def selectyears(dollars, choice):
 
 def roicalculator(dollars, choice, years):
 
-	savings = dollars*(1.01)**(1.01*years)
-	investment = dollars*(1.10)**(1.10*years)
+	calcsavings = dollars*(1.01)**(1.01*years)
+	savings = float(str(round(calcsavings, 2)))
+	calcinvestment = dollars*(1.10)**(1.10*years)
+	investment = float(str(round(calcinvestment, 2)))
+	difference = investment - savings
 
 	if choice == "save":
-		print "Based on a 1% interest rate,"
-		print "You'd save %s" % savings
-		print "If you invested the money you would have %s" % investment
+		interestlist = [0.009, 0.01, 0.011]
+		for interest in interestlist:
+
+			print "Based on a %s interest rate," % (interest * 100)
+			print "You'd save %s" % savings
+			print "If invested with 10 interest you'd have: %s" % investment
+			print "The difference is: %s" % difference
+
 	elif choice == "invest":
 		print "Based on a 10% interest rate,"
 		print "Your roi would be %s" % investment
-		print "If you saved the money you would have %s" % savings
-
-def roi_save(dollars):
-	'''This function calulcates roi on savings'''
-	roilist = [1.01, 1.03, 1.05]
-
-	for roi in roilist:
-		print dollars * roi
-
-
-def roi_invest(dollars):
-
-	roilist = [1.05, 1.1, 1.15]
-
-	for roi in roilist:
-		print dollars * roi
+		print "Saved with a 1 interest you'd have: %s" % savings
+		print "the difference is: %s" % difference
 
 
 def kill(why):
