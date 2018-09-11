@@ -55,29 +55,71 @@ def selectyears(dollars, choice):
 	else:
 		roicalculator(dollars, choice, years)
 
+
+def compoundinterest(dollars, years, interest):
+	'''Compound interest calculator formula, rounded down to 2 decimal points'''
+	return float(str(round((dollars*(1 + interest)**((1 + interest)*years)), 2)))
+
+
 def roicalculator(dollars, choice, years):
 
-	calcsavings = dollars*(1.01)**(1.01*years)
+	interest = 0.01
+	calcsavings = dollars*(1 + interest)**((1 + interest)*years)
 	savings = float(str(round(calcsavings, 2)))
-	calcinvestment = dollars*(1.10)**(1.10*years)
+	calcinvestment = dollars*(1 + interest)**((1 + interest)*years)
 	investment = float(str(round(calcinvestment, 2)))
 	difference = investment - savings
 
+
 	if choice == "save":
-		interestlist = [0.009, 0.01, 0.011]
+		print "Enter one or more interest rates"
+		## Enter interest rates as a list [0.009, 0.01, 0.011]
+		interests = raw_input("> ")
+		interestlist = eval(interests)
+
 		for interest in interestlist:
 
-			print "Based on a %s interest rate," % (interest * 100)
-			print "You'd save %s" % savings
-			print "If invested with 10 interest you'd have: %s" % investment
-			print "The difference is: %s" % difference
+			print compoundinterest(dollars, years, interest)
+
+			# print "Based on a %s percent interest rate," % (interest * 100)
+			# print "You'd save %s" % savings
+			# print "If invested with 10 interest you'd have: %s" % investment
+			# print "The difference is: %s" % difference
+
+		yearoptions(dollars, choice, years, interest)
 
 	elif choice == "invest":
-		print "Based on a 10% interest rate,"
-		print "Your roi would be %s" % investment
-		print "Saved with a 1 interest you'd have: %s" % savings
-		print "the difference is: %s" % difference
+		interestlist = [0.08, 0.1, 0.15]
+		for interest in interestlist:
 
+			print compoundinterest(dollars, years, interest)
+
+			# print "Based on a %s percent interest rate," % (interest * 100)
+			# print "Your roi would be %s" % investment
+			# print "Saved with a 1 interest you'd have: %s" % savings
+			# print "the difference is: %s" % (investment - savings)
+
+		yearoptions(dollars, choice, years, interest)
+
+
+def yearoptions(dollars, choice, years, interest):
+
+	print "Do you want to calculate your interest for different years?"
+
+	userinput = raw_input("> ")
+
+	if userinput == "yes":
+
+		print "For how which years do you wish to recalculate?"
+		moreyears = raw_input("> ")
+		moreyearlist = eval(moreyears)
+
+		for additional in moreyearlist:
+
+			print compoundinterest(dollars, additional, interest)
+
+	else:
+		kill("End.")
 
 def kill(why):
 	'''This function exits the game in terminal if you're dead'''
