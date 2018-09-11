@@ -89,7 +89,11 @@ def roicalculator(dollars, choice, years):
 		yearoptions(dollars, choice, years, interest)
 
 	elif choice == "invest":
-		interestlist = [0.08, 0.1, 0.15]
+		print "Enter one or more interest rates"
+		## Enter interest rates as a list [0.009, 0.01, 0.011]
+		interests = raw_input("> ")
+		interestlist = eval(interests)
+		
 		for interest in interestlist:
 
 			print compoundinterest(dollars, years, interest)
