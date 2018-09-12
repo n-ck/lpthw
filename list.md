@@ -197,6 +197,12 @@ continue - The continue statement is used to skip the rest of the code inside a 
 return - The return statement causes your function to exit and hand back a value to its caller. 
 lambda - Small anonymous function, can take any number of arguments but can only have on expression
 
+## String Formats
+
+%s - Strings
+%d - Integers
+%f - Floating point numbers
+*More: https://docs.python.org/3.4/library/string.html*
 
 *Left off with the Python list at exercise 27*
 
