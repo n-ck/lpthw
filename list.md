@@ -180,6 +180,24 @@ When a loop runs, it goes through its block of code, and at the end it jumps bac
 
 A for-loop can only iterate (loop) “over” collections of things. A while-loop can do any kind of iteration (looping) you want
 
+## Keywords
+
+del - deletes objects, can be used to delete variables, lists or part of a list etc
+global - we use global keyword to read and write a global variable inside a function.
+assert - test a condition and trigger an error if the condition is false
+pass - the pass statement is a null operation; nothing happens when it executes. 
+yield - 
+break - statement used in for and while loops to exit from the loop 
+try - block used to test a block of code for errors
+except - block used to handle the error
+finally - used to execute code, regardless of the try and except blocks
+exec - The exec() method executes the dynamically created program, which is either a string or a code object.
+raise - 
+continue - The continue statement is used to skip the rest of the code inside a loop for the current iteration only. Loop does not terminate but continues on with the next iteration.
+return - The return statement causes your function to exit and hand back a value to its caller. 
+lambda - Small anonymous function, can take any number of arguments but can only have on expression
+
+
 *Left off with the Python list at exercise 27*
 
 *Left off at page 83/101[PDF] - Exercise 24*
