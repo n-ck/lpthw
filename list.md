@@ -199,6 +199,6 @@ return - The return statement causes your function to exit and hand back a value
 lambda - Small anonymous function, can take any number of arguments but can only have on expression.  
  
 
-*Left off with the Python list at exercise 27*
+*Left off with the Python list at exercise 37*
 
-*Left off at page 83/101[PDF] - Exercise 24*
+*Left off at page 125/142[PDF] - Exercise 37*
