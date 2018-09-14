@@ -60,3 +60,61 @@ if not state:
 city = cities.get('TX', 'Does Not Exist')
 print "The city for the state 'TX' is %s" % city
 
+
+provincies = {
+	'Z-H': 'Zuid-Holland',
+	'N-H': 'Noord-Holland',
+	'UT': 'Utrecht',
+	'GR': 'Groningen',
+}
+steden = {
+	'Z-H': 'Rotterdam',
+	'N-H': 'Amsterdam',
+	'UT': 'Utrecht',
+	'GR': 'Groningen',
+}
+
+print provincies['Z-H']
+print steden['UT']
+
+# print all keys in provincies
+for abbrev in provincies.items():
+	print abbrev
+
+# print all keys in provincies
+for abbrev in provincies:
+	print abbrev
+
+#print all keys in provincies
+for abbrev, states in provincies.items():
+	print abbrev
+
+#print all values in provincies
+for abbrev in provincies:
+	print(provincies[abbrev])
+
+for abbrev, states in provincies.items():
+	print steden[abbrev]
+
+# print number of key-value pairs in the dictionary
+print len(steden)
+
+# add a new item to a dictionary
+steden['N-B'] = "Breda"
+
+print steden['N-B']
+print len(steden)
+
+# remove key value pair
+del steden['N-B']
+print len(steden)
+
+# get() gets value of specified key
+print steden.get('Z-H')
+
+# update() add a new key-value pairs
+steden.update({'N-B': 'Breda'})
+
+print steden.keys()
+print steden.values()
+print steden.values()
