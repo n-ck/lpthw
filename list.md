@@ -198,6 +198,11 @@ continue - The continue statement is used to skip the rest of the code inside a 
 return - The return statement causes your function to exit and hand back a value to its caller.  
 lambda - Small anonymous function, can take any number of arguments but can only have on expression.  
  
+range()  
+
+basic python operators: https://www.tutorialspoint.com/python/python_basic_operators.htm  
+readme markdown: https://guides.github.com/features/mastering-markdown/  
+
 
 *Left off with the Python list at exercise 37*
 
