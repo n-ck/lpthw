@@ -23,7 +23,7 @@ PHRASES = {
 # do they want to drill phrases first
 PHRASE_FIRST = False
 if len(sys.argv) == 2 and sys.argv[1] == "english":
-	PHRASE_FIRST = TRUE
+	PHRASE_FIRST = True
 
 # load up the words from the website
 for word in urlopen(WORLD_URL).readlines():
@@ -41,25 +41,22 @@ def convert(snippet, phrase):
 		param_count = random.randint(1,3)
 		param_names.append(', '.join(random.sample(WORDS, param_count)))
 
-		for sentence in snippet, phrase:
-			result = sentence[:]
+	for sentence in snippet, phrase:
+		result = sentence[:]
 
-			# fake class names
+		# fake class names
+		for word in class_names:
+			result = result.replace("%%%", word, 1)
 
-			for word in class_names:
-				result = result.replace("%%%", word, 1)
+		# fake other names
+		for word in other_names:
+			result = result.replace("***", word, 1)
 
-			# fake other names
+		# fake parameter lists
+		for word in param_names:
+			results = result.replace("@@@", word, 1)
 
-			for word in other_names:
-				result = result.replace("***", word, 1)
-
-			# fake parameter lists
-
-			for word in param_names:
-				results = result.replace("@@@", word, 1)
-
-			results.append(result)
+		results.append(result)
 
 	return results
 
@@ -72,6 +69,8 @@ try:
 		for snippet in snippets:
 			phrase = PHRASES[snippet]
 			question, answer = convert(snippet, phrase)
+			
+			# if PHRASE_FIRST is True:
 			if PHRASE_FIRST:
 				question, answer = answer, question
 
