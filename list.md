@@ -203,6 +203,25 @@ range()
 basic python operators: https://www.tutorialspoint.com/python/python_basic_operators.htm  
 readme markdown: https://guides.github.com/features/mastering-markdown/  
 
+## Object Oriented Programming Process 
+
+Top down:  
+
+1. Write or draw the problem  
+2. Extract key concepts from #1 and research them  
+3. Create a class hierarchy and object map for the concepts  
+4. Code the classes and a test to run them.  
+5. Repeat and refine  
+
+Bottom up:
+
+1. Take a small piece of the problem; hack on some code and get it to run barely  
+2. Refine the code into something more formal with classes and automated tests  
+3. Extract the key concepts you're using and try to find research for them  
+4. Write up a description of what's really going on  
+5. Go back and refine the code, possibly throwing it out and starting over  
+6. Repeat, moving on to some other piece of the problem  
+
 
 *Left off with the Python list at exercise 37*
 
