@@ -225,4 +225,4 @@ Bottom up:
 
 *Left off with the Python list at exercise 37*
 
-*Left off at page 125/142[PDF] - Exercise 37*
+*Left off at page 177/160[PDF] - Exercise 43*
