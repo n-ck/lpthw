@@ -6,10 +6,12 @@ class Scene(object):
 class Engine(object):
 
 	def __init__(self, scene_map):
-		pass
+		self.scene_map = scene_map
 
 	def play(self):
-		pass
+		firstscene = raw_input("> ")
+		if firstscene != "":
+			exit()
 
 class Death(Scene):
 
@@ -47,6 +49,9 @@ class Map(object):
 	def opening_scene(self):
 		pass
 
-a_map = Map('central_corridor')
-a_game = Engine (a_map)
-a_game.play()
+# a_map = Map('central_corridor')
+# a_game = Engine(a_map)
+# a_game.play()
+
+startgame = Engine('centralcorridor')
+startgame.play()
