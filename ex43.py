@@ -13,21 +13,30 @@ class Engine(object):
 		print self.scene_map
 		print self.game_start
 
+		print "\nChoose one of the following rooms to continue:\n"
+
 		scenes = ['Central Corricor', 
 				  'Laser Weapon Armory',
+				  'The Bridge',
 				  'Escape Pod']
 
 		for scene in scenes:
 			print scene
 
+		print "Enter your choice:\n"
 		firstscene = raw_input("> ")
+
 		if firstscene != "":
-			exit()
+			print "Continue to the next level in %s" % scene
+		else:
+			yourdead = Death()
+			yourdead.enter()
 
 class Death(Scene):
 
 	def enter(self):
-		pass
+		print "Game Over"
+		exit(0)
 
 class CentralCorridor(Scene):
 
