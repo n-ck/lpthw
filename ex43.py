@@ -15,7 +15,7 @@ class Engine(object):
 
 		print "\nChoose one of the following rooms to continue:\n"
 
-		scenes = ['Central Corricor', 
+		scenes = ['Central Corridor', 
 				  'Laser Weapon Armory',
 				  'The Bridge',
 				  'Escape Pod']
@@ -26,17 +26,12 @@ class Engine(object):
 		print "Enter your choice:\n"
 		firstscene = raw_input("> ")
 
-		# print firstscene
-
 		for chosenscene in scenes:
 
 			if firstscene == chosenscene:
 				yourchoice = chosenscene
-				print yourchoice
-			# 	choice = chosenscene
-			# 	print "Continue to the next level in %s" % chosenscene
+				print "Continue to the next level in %s" % yourchoice
 
-			# else:
 			# 	yourdead = Death()
 			# 	yourdead.enter()
 
