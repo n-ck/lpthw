@@ -26,16 +26,24 @@ class Engine(object):
 		print "Enter your choice:\n"
 		firstscene = raw_input("> ")
 
-		if firstscene != "":
-			print "Continue to the next level in %s" % scene
-		else:
-			yourdead = Death()
-			yourdead.enter()
+		# print firstscene
+
+		for chosenscene in scenes:
+
+			if firstscene == chosenscene:
+				yourchoice = chosenscene
+				print yourchoice
+			# 	choice = chosenscene
+			# 	print "Continue to the next level in %s" % chosenscene
+
+			# else:
+			# 	yourdead = Death()
+			# 	yourdead.enter()
 
 class Death(Scene):
 
 	def enter(self):
-		print "Game Over"
+		print "Game Over!!!"
 		exit(0)
 
 class CentralCorridor(Scene):
