@@ -32,6 +32,9 @@ class Engine(object):
 				yourchoice = chosenscene
 				print "Continue to the next level in %s" % yourchoice
 
+				gamemap = Map(yourchoice)
+				gamemap.opening_scene()
+
 			# 	yourdead = Death()
 			# 	yourdead.enter()
 
@@ -44,7 +47,7 @@ class Death(Scene):
 class CentralCorridor(Scene):
 
 	def enter(self):
-		pass
+		print "\nYou entered the Central Corridor"
 
 class LaserWeaponArmory(Scene):
 
@@ -64,13 +67,14 @@ class EscapePod(Scene):
 class Map(object):
 
 	def __init__(self, start_scene):
-		pass
+		self.start_scene = start_scene
 
 	def next_scene(self, scene_name):
 		pass
 
 	def opening_scene(self):
-		pass
+		centralcorridor = CentralCorridor()
+		centralcorridor.enter()
 
 # a_map = Map('central_corridor')
 # a_game = Engine(a_map)
