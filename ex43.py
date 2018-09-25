@@ -16,30 +16,41 @@ class Engine(object):
 		print self.scene_map
 		print self.game_start
 
-		print "\nChoose one of the following rooms to continue:\n"
+		print """\nYou start in the central corridor of the spaceship
+		There is a hammer and a lasergun on the ground
+		there is a closed door in front of you,
+		how do you continue?"""
 
-		scenes = ['Central Corridor', 
-				  'Laser Weapon Armory',
-				  'The Bridge',
-				  'Escape Pod']
+		# scenes = ['Central Corridor', 
+		# 		  'Laser Weapon Armory',
+		# 		  'The Bridge',
+		# 		  'Escape Pod']
 
-		for scene in scenes:
-			print scene
+		# for scene in scenes:
+		# 	print scene
 
-		print "Enter your choice:\n"
+		# print "Enter your choice:\n"
 		firstscene = raw_input("> ")
 
-		for chosenscene in scenes:
+		if "lasergun" in firstscene:
+			print "you opened the door"
+		elif "hammer" in firstscene:
+			print "the door won't open"
+		else:
+			yourdead = Death()
+			yourdead.enter()			
 
-			if firstscene == chosenscene:
-				yourchoice = chosenscene
-				print "Continue to the next level in %s" % yourchoice
+		# for chosenscene in scenes:
 
-				gamemap = Map(yourchoice)
-				gamemap.opening_scene()
+		# 	if firstscene == chosenscene:
+		# 		yourchoice = chosenscene
+		# 		print "Continue to the next level in %s" % yourchoice
 
-			# 	yourdead = Death()
-			# 	yourdead.enter()
+		# # initialize the Map class
+		# gamemap = Map(yourchoice)
+		# # load the opening_scene function of the Map class
+		# gamemap.opening_scene()
+
 
 # This is when the player dies and should be something funny
 class Death(Scene):
@@ -82,7 +93,9 @@ class Map(object):
 		pass
 
 	def opening_scene(self):
+		# initialize the CentralCorridor class
 		centralcorridor = CentralCorridor()
+		# load the enter function of the CentralCorridor class
 		centralcorridor.enter()
 
 # a_map = Map('central_corridor')
