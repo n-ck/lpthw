@@ -3,6 +3,9 @@ class Scene(object):
 	def enter(self):
 		pass
 
+# The engine runs a map full of rooms or scenes
+# Each room will print its own description when the player enters it
+# and then tell the engine what room to run next out of the map.
 class Engine(object):
 
 	def __init__(self, scene_map, game_start):
@@ -38,31 +41,37 @@ class Engine(object):
 			# 	yourdead = Death()
 			# 	yourdead.enter()
 
+# This is when the player dies and should be something funny
 class Death(Scene):
 
 	def enter(self):
 		print "Game Over!!!"
 		exit(0)
 
+# This is the starting point
 class CentralCorridor(Scene):
 
 	def enter(self):
 		print "\nYou entered the Central Corridor"
 
+# The second scene (after the Central Corridor)
 class LaserWeaponArmory(Scene):
 
 	def enter(self):
 		pass
 
+# This is the third scene
 class TheBridge(Scene):
 
 	def enter(self):
 		pass
 
+# Final scene, escape through the Escape Pod
 class EscapePod(Scene):
 
 	def enter(self):
-		pass
+		print "Congratulations you escaped through the Escape Pod!"
+		print "This is the end of the game!"
 
 class Map(object):
 
