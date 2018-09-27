@@ -34,6 +34,8 @@ class Engine(object):
 
 		if "lasergun" in firstscene:
 			print "you opened the door"
+			next_scene = Map('central corridor')
+			next_scene.opening_scene()
 		elif "hammer" in firstscene:
 			print "the door won't open"
 		else:
@@ -64,18 +66,34 @@ class CentralCorridor(Scene):
 
 	def enter(self):
 		print "\nYou entered the Central Corridor"
+		print "\nType something:"
+
+		next_scene = raw_input("> ")
+
+		if next_scene != "":
+			laserweapon = LaserWeaponArmory()
+			laserweapon.enter()
 
 # The second scene (after the Central Corridor)
 class LaserWeaponArmory(Scene):
 
 	def enter(self):
-		pass
+		print "You're now in the Laser Weapon Armory"
+		print "\nType something:"
+
+		next_scene = raw_input("> ")
+
+		if next_scene != "":
+			thebridge = TheBridge()
+			thebridge.enter()
 
 # This is the third scene
 class TheBridge(Scene):
 
 	def enter(self):
-		pass
+		print "You entered the Bridge"
+
+		next_scene = raw_input("> ")
 
 # Final scene, escape through the Escape Pod
 class EscapePod(Scene):
