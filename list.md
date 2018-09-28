@@ -223,6 +223,6 @@ Bottom up:
 6. Repeat, moving on to some other piece of the problem  
 
 
-*Left off with the Python list at exercise 37*
+*Left off with the Python list at exercise 43*
 
 *Left off at page 177/160[PDF] - Exercise 43*
