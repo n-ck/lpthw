@@ -79,7 +79,9 @@ class Death(Scene):
 			print "\nThe bridge collapses and you fall into a black hole"
 		if scene == "escapepod":
 			print "\nThe escape pod burns out completely, you're dead..."
-
+		if scene == "gamewon":
+			print "\nCongratulations you escaped and won!"
+			
 		print "Game Over!!!\n"
 		exit(0)
 
@@ -108,17 +110,28 @@ class CentralCorridor(Scene):
 
 
 # The second scene (after the Central Corridor)
-class LaserWeaponArmory(Scene):
+class LaserWeaponArmory(Scene):		
 
 	def enter(self):
 		print "You're now in the Laser Weapon Armory"
-		print "\nType something:"
+		print "Pick a weapon:"
 
-		next_scene = raw_input("> ")
+		thisscene = raw_input("> ")
+		correctanswer = True
 
-		if next_scene != "":
-			thebridge = TheBridge()
-			thebridge.enter()
+		while correctanswer:
+			if "shoot" in thisscene:
+				print "You made your way on to the bridge"
+				next_scene = TheBridge()
+				next_scene.enter()
+				correctanswer = False
+			elif "weapon" in thisscene:
+				yourdead = Death('laserweaponarmory')
+				yourdead.enter()
+			else:
+				print "You can't reach the bridge, try again:"
+				thisscene = raw_input("> ")
+
 
 # This is the third scene
 class TheBridge(Scene):
@@ -126,7 +139,19 @@ class TheBridge(Scene):
 	def enter(self):
 		print "You entered the Bridge"
 
-		next_scene = raw_input("> ")
+		thisscene = raw_input("> ")
+		correctanswer = True
+
+		while correctanswer:
+			if "lightsaber" in thisscene:
+				next_scene = EscapePod()
+				next_scene.enter()
+			elif "victory" in thisscene:
+				yourdead = Death("thebridge")
+				yourdead.enter()
+			else:
+				print "The fight on the bridge is not over yet, try again:"
+				thisscene = raw_input("> ")
 
 # Final scene, escape through the Escape Pod
 class EscapePod(Scene):
@@ -134,6 +159,8 @@ class EscapePod(Scene):
 	def enter(self):
 		print "Congratulations you escaped through the Escape Pod!"
 		print "This is the end of the game!"
+		theend = Death("youwon")
+		theend.enter()
 
 class Map(object):
 
