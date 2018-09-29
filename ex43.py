@@ -19,7 +19,7 @@ class Engine(object):
 		# print self.scene_map
 		# print self.game_start
 
-		print "You start in the central corridor of the spaceship"
+		print "\nYou start in the central corridor of the spaceship"
 		print "There are a hammer and a lasergun on the ground"
 		print "there is a closed door in front of you,"
 		print "how do you continue?"
@@ -91,16 +91,21 @@ class CentralCorridor(Scene):
 		print "How do you get to the Laser Weapon Armory?"
 
 		thisscene = raw_input("> ")
+		correctanswer = True
 
-		if "break" in thisscene:
-			print "you opened the door to the Laser Weapon Armory"
-			next_scene = LaserWeaponArmory()
-			next_scene.enter()
-		elif "open" in firstscene:
-			print "the door won't open"
-		else:
-			yourdead = Death()
-			yourdead.enter()	
+		while correctanswer:
+			if "break" in thisscene:
+				print "you opened the door to the Laser Weapon Armory"
+				next_scene = LaserWeaponArmory()
+				next_scene.enter()
+				correctanswer = False
+			elif "open" in thisscene:
+				yourdead = Death("centralcorridor")
+				yourdead.enter()					
+			else:
+				print "the door won't open, try again:"
+				thisscene = raw_input("> ")
+
 
 # The second scene (after the Central Corridor)
 class LaserWeaponArmory(Scene):
