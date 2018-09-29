@@ -44,7 +44,7 @@ class Engine(object):
 				next_scene.opening_scene()
 				correctscene = False
 			elif "hammer" in firstscene:
-				yourdead = Death()
+				yourdead = Death("centralcorridor")
 				yourdead.enter()
 			else:
 				print "Oh no.. the door won't open, try again:"
@@ -65,8 +65,22 @@ class Engine(object):
 # This is when the player dies and should be something funny
 class Death(Scene):
 
+	def __init__(self, scene):
+		self.scene = scene
+
 	def enter(self):
-		print "Game Over!!!"
+		scene = self.scene
+
+		if scene == "centralcorridor":
+			print "\nYou're floating in space infinitely"
+		if scene == "laserweaponarmory":
+			print "\nYou're never unlocking a weapon, you die!"
+		if scene == "thebridge":
+			print "\nThe bridge collapses and you fall into a black hole"
+		if scene == "escapepod":
+			print "\nThe escape pod burns out completely, you're dead..."
+
+		print "Game Over!!!\n"
 		exit(0)
 
 # This is the starting point
