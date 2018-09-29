@@ -13,13 +13,16 @@ class Engine(object):
 		self.game_start = game_start
 
 	def play(self):
-		print self.scene_map
-		print self.game_start
+		## This prints what you enter in the Engine() class 
+		## i.e. Engine('centralcorridor', 'yes')
 
-		print """\nYou start in the central corridor of the spaceship
-		There is a hammer and a lasergun on the ground
-		there is a closed door in front of you,
-		how do you continue?"""
+		# print self.scene_map
+		# print self.game_start
+
+		print "You start in the central corridor of the spaceship"
+		print "There are a hammer and a lasergun on the ground"
+		print "there is a closed door in front of you,"
+		print "how do you continue?"
 
 		# scenes = ['Central Corridor', 
 		# 		  'Laser Weapon Armory',
@@ -31,16 +34,21 @@ class Engine(object):
 
 		# print "Enter your choice:\n"
 		firstscene = raw_input("> ")
+		correctscene = True
 
-		if "lasergun" in firstscene:
-			print "you opened the door"
-			next_scene = Map('central corridor')
-			next_scene.opening_scene()
-		elif "hammer" in firstscene:
-			print "the door won't open"
-		else:
-			yourdead = Death()
-			yourdead.enter()			
+		while correctscene:
+
+			if "lasergun" in firstscene:
+				print "You opened the door!"
+				next_scene = Map('central corridor')
+				next_scene.opening_scene()
+				correctscene = False
+			elif "hammer" in firstscene:
+				yourdead = Death()
+				yourdead.enter()
+			else:
+				print "Oh no.. the door won't open, try again:"
+				firstscene = raw_input("> ")	
 
 		# for chosenscene in scenes:
 
@@ -66,13 +74,19 @@ class CentralCorridor(Scene):
 
 	def enter(self):
 		print "\nYou entered the Central Corridor"
-		print "\nType something:"
+		print "How do you get to the Laser Weapon Armory?"
 
-		next_scene = raw_input("> ")
+		thisscene = raw_input("> ")
 
-		if next_scene != "":
-			laserweapon = LaserWeaponArmory()
-			laserweapon.enter()
+		if "break" in thisscene:
+			print "you opened the door to the Laser Weapon Armory"
+			next_scene = LaserWeaponArmory()
+			next_scene.enter()
+		elif "open" in firstscene:
+			print "the door won't open"
+		else:
+			yourdead = Death()
+			yourdead.enter()	
 
 # The second scene (after the Central Corridor)
 class LaserWeaponArmory(Scene):
