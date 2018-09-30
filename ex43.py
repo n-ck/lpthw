@@ -41,6 +41,24 @@ class Engine(object):
 				print "Oh no.. the door won't open, try again:"
 				firstscene = raw_input("> ")
 
+		## Alternative notation but not much shorter:
+		# next_scene = Map('')
+		# guessedcorrect = "lasergun" 
+		# guessedwrong = "hammer"
+		# successmessage = "blabla"
+		# tryagain = "try again"
+
+		# while correctscene:
+		# 	if guessedcorrect in firstscene:
+		# 		print successmessage
+		# 		next_scene.enter()
+		# 	elif guessedwrong in firstcene:
+		# 		Death("centralcorridor").enter()
+		# 	else guessagain in firstscene:
+		# 		print tryagain
+		# 		firstscene = raw_input("> ")
+
+
 # This is when the player dies and should be something funny
 class Death(Scene):
 
