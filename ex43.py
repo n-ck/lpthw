@@ -13,9 +13,9 @@ class Engine(object):
 		self.game_start = game_start
 
 	def play(self):
+
 		## This prints what you enter in the Engine() class 
 		## i.e. Engine('centralcorridor', 'yes')
-
 		# print self.scene_map
 		# print self.game_start
 
@@ -24,15 +24,6 @@ class Engine(object):
 		print "there is a closed door in front of you,"
 		print "how do you continue?"
 
-		# scenes = ['Central Corridor', 
-		# 		  'Laser Weapon Armory',
-		# 		  'The Bridge',
-		# 		  'Escape Pod']
-
-		# for scene in scenes:
-		# 	print scene
-
-		# print "Enter your choice:\n"
 		firstscene = raw_input("> ")
 		correctscene = True
 
@@ -48,19 +39,7 @@ class Engine(object):
 				yourdead.enter()
 			else:
 				print "Oh no.. the door won't open, try again:"
-				firstscene = raw_input("> ")	
-
-		# for chosenscene in scenes:
-
-		# 	if firstscene == chosenscene:
-		# 		yourchoice = chosenscene
-		# 		print "Continue to the next level in %s" % yourchoice
-
-		# # initialize the Map class
-		# gamemap = Map(yourchoice)
-		# # load the opening_scene function of the Map class
-		# gamemap.opening_scene()
-
+				firstscene = raw_input("> ")
 
 # This is when the player dies and should be something funny
 class Death(Scene):
@@ -81,7 +60,7 @@ class Death(Scene):
 			print "\nThe escape pod burns out completely, you're dead..."
 		if scene == "gamewon":
 			print "\nCongratulations you escaped and won!"
-			
+
 		print "Game Over!!!\n"
 		exit(0)
 
@@ -176,6 +155,7 @@ class Map(object):
 		# load the enter function of the CentralCorridor class
 		centralcorridor.enter()
 
+## Code from the template:
 # a_map = Map('central_corridor')
 # a_game = Engine(a_map)
 # a_game.play()
