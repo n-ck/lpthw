@@ -122,7 +122,7 @@ class TheBridge(Scene):
 		print "weapons out yet, as they see the active bomb under your"
 		print "arm and don't want to set it off."
 
-		action = raw_input("> ") 45
+		action = raw_input("> ")
 		
 		if action == "throw the bomb":
 			print "In a panic you throw the bomb at the group of Gothons"
@@ -175,3 +175,26 @@ class EscapePod(Scene):
 			print "time. You won!"
 
 			return 'finished'
+
+class Map(object):
+
+	scenes = {
+		'central_corridor': CentralCorridor(),
+		'laser_weapon_armory': LaserWeaponArmory(),
+		'the_bridge': TheBridge(),
+		'escape_pod': EscapePod(),
+		'death': Death(),
+	}
+
+	def __init__(self, start_scene):
+		self.start_scene = start_scene
+
+	def next_scene(self, scene_name):
+		return Map.scenes.get(scene_name)
+
+	def opening_scene(self):
+		return self.next_scene(self.start_scene)
+
+a_map = Map('central_corridor')
+a_game = Engine(a_map)
+a_game.play()
