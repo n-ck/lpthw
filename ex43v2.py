@@ -85,13 +85,15 @@ class LaserWeaponArmory(Scene):
 
 	def enter(self):
 		print "You do a dive roll into the Weapon Armory, crouch and scan the room"
-		print"formoreGothonsthatmightbehiding. It'sdeadquiet,tooquiet."
+		print "for more Gothons that might be hiding. It's dead quiet, too quiet."
 		print "You stand up and run to the far side of the room and find the"
 		print "neutron bomb in its container. There's a keypad lock on the box"
 		print "and you need the code to get the bomb out. If you get the code"
 		print "wrong 10 times then the lock closes forever and you can't"
 		print "get the bomb. The code is 3 digits."
-		code = "%d%d%d" % (randint(1,9), randint(1,9), randint(1,9))
+
+		# code = "%d%d%d" % (randint(1,9), randint(1,9), randint(1,9))
+		code = 999
 		guess = raw_input("[keypad]> ")
 		guesses = 0
 
@@ -195,6 +197,11 @@ class Map(object):
 	def opening_scene(self):
 		return self.next_scene(self.start_scene)
 
+# initialize the Map class with as start_scene = 'central_corridor'
 a_map = Map('central_corridor')
+
+# initialize the Engine class with as scene_map = 'central_corridor'
 a_game = Engine(a_map)
+
+# the engine map uses the opening_scene function in the Map class to start the game at the opening scene
 a_game.play()
