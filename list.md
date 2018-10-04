@@ -222,7 +222,10 @@ Bottom up:
 5. Go back and refine the code, possibly throwing it out and starting over  
 6. Repeat, moving on to some other piece of the problem  
 
+## Python Pep 8 Style Guide:
+https://www.python.org/dev/peps/pep-0008/
 
-*Left off with the Python list at exercise 43*
 
-*Left off at page 177/160[PDF] - Exercise 43*
+*Left off with exercise 44*
+
+*Left off at page 193/177[PDF] - Exercise 44*
