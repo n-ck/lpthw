@@ -8,21 +8,42 @@
 # purpose of the lesson is to teach how to structure classes
 # that need other classes inside other files
 
-# Game description:
-# Pick one out of 3 doors for every room
-# Based on the door picked you go the the next room
-# 2 doors lead to the next room, in one door you die
-# 
+## Game description:
+# Open a vault to steal money from a bank
+# Escape through a tunnel
+# Get into the bank
+# Pass the laser security
+# Don't get seen by a camera
 
 
-class Rooms():
-	pass
 
-class Dead():
+
+# from blabla import blabla
+from ex45script import *
+
+
+class Bank():
+	#Has all rooms, doors, vault and tunnel
+	def bank_areas(self):
+		areas = ['entry', 'teller', 'back office', 'vault', 'tunnel']
+
+		print areas[0]
+
+class Caught():
+	# when you get caught by security/the police
 	pass
 
 class StartGame():
+	#
 	pass
 
-class Doors():
+class Vault():
+	#
 	pass
+
+
+startgame = Bank()
+startgame.bank_areas()
+
+level = GameScript()
+level.game_level('teller')
