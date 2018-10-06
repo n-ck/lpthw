@@ -17,33 +17,41 @@
 
 
 
-
-# from blabla import blabla
 from ex45script import *
 
 
 class Bank():
 	#Has all rooms, doors, vault and tunnel
 	def bank_areas(self):
-		areas = ['entry', 'teller', 'back office', 'vault', 'tunnel']
+		areas = {'level 0': 'entry', 'level 1': 'teller', 
+				'level 2': 'back office', 'level 3': 'vault', 'level 4': 'tunnel'
+			}
 
-		print areas[0]
+		# return statement so you can access the dictionary
+		return areas
+
 
 class Caught():
 	# when you get caught by security/the police
 	pass
 
+
 class StartGame():
-	#
-	pass
+	# start the game
+
+	def load_areas(self):
+
+		the_bank = Bank().bank_areas()
+		currentlevel = the_bank['level 0']
+
+		gamescript = GameScript()
+		gamescript.level_description(currentlevel)
+
 
 class Vault():
 	#
 	pass
 
 
-startgame = Bank()
-startgame.bank_areas()
-
-level = GameScript()
-level.game_level('teller')
+startgame = StartGame()
+startgame.load_areas()
