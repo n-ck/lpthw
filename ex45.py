@@ -18,6 +18,7 @@
 
 
 from ex45script import *
+import random
 
 
 class Bank():
@@ -34,7 +35,17 @@ class Bank():
 class Caught():
 	# when you get caught by security/the police
 	def __init__(self):
-		print "You got caught!"
+
+		reasons = ['You got noticed on the security camera', 
+		'The alarm went off','The police caught you',
+		'You set off a motion-detection laser',
+		'A bank security guard caught you'
+		]
+
+		randomnumber = random.randint(0,4)
+
+		print reasons[randomnumber]
+		# you need this exit statement or python will throw an error
 		exit(0)
 
 
@@ -67,7 +78,8 @@ class StartGame():
 
 
 class Vault():
-	#
+	# last level of the game, guess the combination of the 
+	# vault to enter and steal all the money in there.
 	pass
 
 startgame = StartGame()
