@@ -33,7 +33,22 @@ class Bank():
 
 class Caught():
 	# when you get caught by security/the police
-	pass
+	def __init__(self):
+		print "You got caught!"
+		exit(0)
+
+
+class Level():
+	# parent class for every level
+
+	def __init__(self):
+		user_input = raw_input("> ")
+
+		if user_input != "":
+			print "Next level"
+		else:
+			gameover = Caught()
+			gameover()
 
 
 class StartGame():
@@ -47,11 +62,13 @@ class StartGame():
 		gamescript = GameScript()
 		gamescript.level_description(currentlevel)
 
+		levellogic = Level()
+		levellogic
+
 
 class Vault():
 	#
 	pass
-
 
 startgame = StartGame()
 startgame.load_areas()
