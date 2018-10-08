@@ -101,9 +101,8 @@ class Generator():
 				# print the string of the next level
 				nextlevel = "level %d" % nextlvl
 
-				print key
-				print value
-				print nextlevel
+				# return the nextlevel dictionary key
+				return nextlevel
 
 	## The generator class determines what level it is,
 	## and what level is generated next:
@@ -119,13 +118,19 @@ class StartGame():
 
 	def load_areas(self):
 
+		# initialize the Bank class 
 		the_bank = Bank().bank_areas()
+		# set the current level, this statement will return the dict value 'entry'
 		currentlevel = the_bank['level 0']
 
+		# initialize the GameScript class
 		gamescript = GameScript()
+		# load the level description that matches the current level
 		gamescript.level_description(currentlevel)
 
+		# initialize the Level logic class
 		levellogic = Level()
+		# load the level logic class
 		levellogic
 
 
@@ -134,8 +139,5 @@ class Vault():
 	# vault to enter and steal all the money in there.
 	pass
 
-# startgame = StartGame()
-# startgame.load_areas()
-
-testgenerator = Generator('tunnel')
-print testgenerator.nextlevel()
+startgame = StartGame()
+startgame.load_areas()
