@@ -74,6 +74,46 @@ class Escape():
 		print "\nCongratulations, you successfully escaped with the money!\n"
 		exit(0)
 
+
+class Generator():
+	def __init__(self, level):
+		self.level = level
+
+	def nextlevel(self):
+		# initialize the Bank class 
+		gameareas = Bank()
+
+		# store the dictionary with bank areas in the variable 'levels'
+		levels = gameareas.bank_areas()
+
+		# loop through the dictionary get the current level and the next level:
+		for key, value in levels.items():
+
+			# check if the value in the dictionary is equal 
+			# to the Generator class parameter:
+			if value == self.level:
+				currentlvl = key
+				# get the last character of the dictionary key string and
+				# save it as a new variable
+				currentlvl = currentlvl.strip()[-1]
+				# add 1 to the current level
+				nextlvl = int(currentlvl) + 1
+				# print the string of the next level
+				nextlevel = "level %d" % nextlvl
+
+				print key
+				print value
+				print nextlevel
+
+	## The generator class determines what level it is,
+	## and what level is generated next:
+
+	# 1. Get current level from the Class init
+	# 2. Get all items from the dictionary
+	# 3. Lookup where current level is in the dictionary
+	# 4. Then return the number + 1 
+	# 5. If the 
+
 class StartGame():
 	# start the game
 
@@ -94,5 +134,8 @@ class Vault():
 	# vault to enter and steal all the money in there.
 	pass
 
-startgame = StartGame()
-startgame.load_areas()
+# startgame = StartGame()
+# startgame.load_areas()
+
+testgenerator = Generator('tunnel')
+print testgenerator.nextlevel()
