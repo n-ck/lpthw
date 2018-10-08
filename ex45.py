@@ -16,7 +16,6 @@
 # Don't get seen by a camera
 
 
-
 from ex45script import *
 import random
 
@@ -51,16 +50,29 @@ class Caught():
 
 class Level():
 	# parent class for every level
+	def __init__(self):
+		entrylevel = Entry()
+		entrylevel()
 
+class Entry():
+	# the opening level/scene of the game (entry of the bank)
 	def __init__(self):
 		user_input = raw_input("> ")
 
 		if user_input != "":
-			print "Next level"
+			print "\nNext level"
+			youescaped = Escape()
+			youescaped()
 		else:
 			gameover = Caught()
 			gameover()
 
+class Escape():
+	# Class for the final scene of the game, when the user has
+	# successfully escaped.
+	def __init__(self):
+		print "\nCongratulations, you successfully escaped with the money!\n"
+		exit(0)
 
 class StartGame():
 	# start the game

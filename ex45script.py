@@ -10,16 +10,16 @@ class GameScript():
 		self.level = level
 
 		if level == "entry":
-			print "You're entering the bank"
+			print "\nYou're entering the bank"
 
 		if level == "teller":
-			print "You're at the teller, try to not act suspicious"
+			print "\nYou're at the teller, try to not act suspicious"
 
 		if level == "back office":
-			print "You made it to the back office"
+			print "\nYou made it to the back office"
 
 		if level == "vault":
-			print "You're at the vault, try to get the right combination"
+			print "\nYou're at the vault, try to get the right combination"
 
 		if level == "tunnel":
-			print "You made it to the tunnel"
+			print "\nYou made it to the tunnel"
