@@ -17,6 +17,7 @@
 
 
 from ex45script import *
+from ex45choices import Choices
 import random
 
 
@@ -57,15 +58,27 @@ class Level():
 class Entry():
 	# the opening level/scene of the game (entry of the bank)
 	def __init__(self):
+
+		# get choices/answers and assign the list to a variable correctanswers
+		correctanswers = Choices().entry_correct()
+		incorrectanswers = Choices().entry_incorrect()
+
+		flag = True
 		user_input = raw_input("> ")
 
-		if user_input != "":
-			print "\nNext level"
-			youescaped = Escape()
-			youescaped()
-		else:
-			gameover = Caught()
-			gameover()
+		while flag:
+			if user_input in correctanswers:
+				print "\nNext level"
+				flag = False
+				youescaped = Escape()
+				youescaped()
+			elif user_input in incorrectanswers:
+				flag = False
+				gameover = Caught()
+				gameover()
+			else:
+				print "Try again:\n"
+				user_input = raw_input("> ")
 
 class Escape():
 	# Class for the final scene of the game, when the user has
