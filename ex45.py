@@ -44,7 +44,9 @@ class Caught():
 
 		randomnumber = random.randint(0,4)
 
-		print reasons[randomnumber]
+		print "\n" + reasons[randomnumber]
+
+		print "\nGame Over!\n"
 		# you need this exit statement or python will throw an error
 		exit(0)
 
@@ -54,6 +56,7 @@ class Level():
 	def __init__(self):
 		entrylevel = Entry()
 		entrylevel()
+
 
 class Entry():
 	# the opening level/scene of the game (entry of the bank)
@@ -66,12 +69,19 @@ class Entry():
 		flag = True
 		user_input = raw_input("> ")
 
+		# working while loop to check for correct and incorrect answers:
 		while flag:
 			if user_input in correctanswers:
-				print "\nNext level"
+				print "\nNext level:\n"
 				flag = False
-				youescaped = Escape()
-				youescaped()
+
+				# next step is to automatically send the user to the next level:
+				print Generator('entry').nextlevel()
+				exit(0)
+
+				# youescaped = Escape()
+				# youescaped()
+
 			elif user_input in incorrectanswers:
 				flag = False
 				gameover = Caught()
@@ -111,11 +121,21 @@ class Generator():
 				currentlvl = currentlvl.strip()[-1]
 				# add 1 to the current level
 				nextlvl = int(currentlvl) + 1
-				# print the string of the next level
-				nextlevel = "level %d" % nextlvl
+				# create the string of the next level
+				getnext = "level %d" % nextlvl
 
 				# return the nextlevel dictionary key
-				return nextlevel
+				return getnext
+
+	## work in progress
+	# def generatenext(self):
+
+	# 	if self.level == "entry":
+	# 		entrylevel = Entry()
+	# 		entrylevel()
+	# 	elif nextlevel() == 'level 1':
+
+
 
 	## The generator class determines what level it is,
 	## and what level is generated next:
@@ -150,7 +170,28 @@ class StartGame():
 class Vault():
 	# last level of the game, guess the combination of the 
 	# vault to enter and steal all the money in there.
-	pass
+	def crack_the_code(self):
 
-startgame = StartGame()
-startgame.load_areas()
+		print "You arrived at the bank's vault, try to unlock the vault spin the wheel left or right"
+	
+		Vault().unlock_safe('right')		
+		
+	def unlock_safe(self, correct):
+
+		self.correct = correct
+
+		firstattempt = raw_input("> ")
+		flag = True
+
+		while flag:
+			if firstattempt in correct:
+				print "correct"
+				flag = False
+			else:
+				print "try again"
+				firstattempt = raw_input("> ")
+
+# initialize the StartGame class and start the game:
+StartGame().load_areas()
+
+# Vault().crack_the_code()
