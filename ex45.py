@@ -61,7 +61,7 @@ class Level():
 
 class Entry():
 	# the opening level/scene of the game (entry of the bank)
-	def __init__(self):
+	def enter(self):
 
 		# get choices/answers and assign the list to a variable correctanswers
 		correctanswers = Choices().entry_correct()
@@ -95,8 +95,14 @@ class Entry():
 
 class Teller():
 
-	def enter(self):
+	def __init__(self):
 		print "You're now at the bank teller"
+
+
+class BackOffice():
+
+	def __init__(self):
+		print "You're now in the back office"
 
 
 class Escape():
@@ -108,11 +114,14 @@ class Escape():
 
 
 class Generator():
-	def __init__(self, level):
+	# def __init__(self, level):
+	# 	self.level = level
+
+	def nextlevel(self, level):
+		# initialize the Bank class 
+
 		self.level = level
 
-	def nextlevel(self):
-		# initialize the Bank class 
 		gameareas = Bank()
 
 		# store the dictionary with bank areas in the variable 'levels'
@@ -135,26 +144,27 @@ class Generator():
 
 				levelvalue = levels[getnext]
 
-				Generator(self.level).loadnextlevel(levelvalue)
+				# print levelvalue
+
+				Generator().loadnextlevel(levelvalue)
 
 	def loadnextlevel(self, nextlevel):
 		# get next level from nextlevel function
 		# load next level based on list in alllevels
 
-		# alllevels = {
-		# 		'entry': Entry(),
-		# 		'teller': Teller().enter(), 
-		# 		'back office': BackOffice().enter(),
-		# 		'vault': Vault().enter(),
-		# 		'tunnel': Tunnel().enter(),
-		# 	}
+		alllevels = {
+				'entry': Entry(),
+				'teller': Teller(), 
+				'back office': BackOffice(),
+				# 'vault': Vault(),
+				# 'tunnel': Tunnel(),
+			}
 
-		# self.nextlevel = rendernext
-		# print rendernext
+		rendernext = self.nextlevel
 
-		# for key in alllevels:
-		# 	if rendernext == key:
-		# 		return rendernext[key]
+		for key in alllevels:
+			if rendernext == key:
+				return rendernext[key]
 
 
 	## work in progress
@@ -222,6 +232,8 @@ class Vault():
 				firstattempt = raw_input("> ")
 
 # initialize the StartGame class and start the game:
-StartGame().load_areas()
+# StartGame().load_areas()
 
 # Vault().crack_the_code()
+
+Generator().nextlevel('entry')
