@@ -159,7 +159,7 @@ class StartGame():
 		# initialize the GameScript class
 		gamescript = GameScript()
 		# load the level description that matches the current level
-		gamescript.level_description(currentlevel)
+		print gamescript.level_description(currentlevel)
 
 		# initialize the Level logic class
 		levellogic = Level()
