@@ -36,10 +36,11 @@ class Caught():
 	# when you get caught by security/the police
 	def __init__(self):
 
-		reasons = ['You got noticed on the security camera', 
-		'The alarm went off','The police caught you',
-		'You set off a motion-detection laser',
-		'A bank security guard caught you'
+		reasons = [
+			'You got noticed on the security camera', 
+			'The alarm went off','The police caught you',
+			'You set off a motion-detection laser',
+			'A bank security guard caught you'
 		]
 
 		randomnumber = random.randint(0,4)
@@ -72,12 +73,13 @@ class Entry():
 		# working while loop to check for correct and incorrect answers:
 		while flag:
 			if user_input in correctanswers:
-				print "\nNext level:\n"
-				flag = False
+				# print "\nNext level:\n"
+				# flag = False
 
 				# next step is to automatically send the user to the next level:
-				print Generator('entry').nextlevel()
-				exit(0)
+				
+				Generator('entry').nextlevel()
+				flag = False
 
 				# youescaped = Escape()
 				# youescaped()
@@ -89,6 +91,13 @@ class Entry():
 			else:
 				print "Try again:\n"
 				user_input = raw_input("> ")
+
+
+class Teller():
+
+	def enter(self):
+		print "You're now at the bank teller"
+
 
 class Escape():
 	# Class for the final scene of the game, when the user has
@@ -124,8 +133,29 @@ class Generator():
 				# create the string of the next level
 				getnext = "level %d" % nextlvl
 
-				# return the nextlevel dictionary key
-				return getnext
+				levelvalue = levels[getnext]
+
+				Generator(self.level).loadnextlevel(levelvalue)
+
+	def loadnextlevel(self, nextlevel):
+		# get next level from nextlevel function
+		# load next level based on list in alllevels
+
+		# alllevels = {
+		# 		'entry': Entry(),
+		# 		'teller': Teller().enter(), 
+		# 		'back office': BackOffice().enter(),
+		# 		'vault': Vault().enter(),
+		# 		'tunnel': Tunnel().enter(),
+		# 	}
+
+		# self.nextlevel = rendernext
+		# print rendernext
+
+		# for key in alllevels:
+		# 	if rendernext == key:
+		# 		return rendernext[key]
+
 
 	## work in progress
 	# def generatenext(self):
