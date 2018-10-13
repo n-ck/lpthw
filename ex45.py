@@ -61,7 +61,7 @@ class Level():
 
 class Entry():
 	# the opening level/scene of the game (entry of the bank)
-	def enter(self):
+	def __init__(self):
 
 		# get choices/answers and assign the list to a variable correctanswers
 		correctanswers = Choices().entry_correct()
@@ -73,16 +73,16 @@ class Entry():
 		# working while loop to check for correct and incorrect answers:
 		while flag:
 			if user_input in correctanswers:
-				# print "\nNext level:\n"
-				# flag = False
+				print "\nNext level:\n"
+				flag = False
 
 				# next step is to automatically send the user to the next level:
 				
-				Generator('entry').nextlevel()
-				flag = False
+				# Generator('entry').nextlevel()
+				# flag = False
 
-				# youescaped = Escape()
-				# youescaped()
+				youescaped = Escape()
+				youescaped()
 
 			elif user_input in incorrectanswers:
 				flag = False
@@ -148,23 +148,23 @@ class Generator():
 
 				Generator().loadnextlevel(levelvalue)
 
-	def loadnextlevel(self, nextlevel):
+	# def loadnextlevel(self, nextlevel):
 		# get next level from nextlevel function
 		# load next level based on list in alllevels
 
-		alllevels = {
-				'entry': Entry(),
-				'teller': Teller(), 
-				'back office': BackOffice(),
-				# 'vault': Vault(),
-				# 'tunnel': Tunnel(),
-			}
+		# alllevels = {
+		# 		'entry': Entry(),
+		# 		'teller': Teller(), 
+		# 		'back office': BackOffice(),
+		# 		# 'vault': Vault(),
+		# 		# 'tunnel': Tunnel(),
+		# 	}
 
-		rendernext = self.nextlevel
+		# rendernext = self.nextlevel
 
-		for key in alllevels:
-			if rendernext == key:
-				return rendernext[key]
+		# for key in alllevels:
+		# 	if rendernext == key:
+		# 		return rendernext[key]
 
 
 	## work in progress
@@ -199,7 +199,7 @@ class StartGame():
 		# initialize the GameScript class
 		gamescript = GameScript()
 		# load the level description that matches the current level
-		print gamescript.level_description(currentlevel)
+		gamescript.level_description(currentlevel)
 
 		# initialize the Level logic class
 		levellogic = Level()
@@ -232,8 +232,8 @@ class Vault():
 				firstattempt = raw_input("> ")
 
 # initialize the StartGame class and start the game:
-# StartGame().load_areas()
+StartGame().load_areas()
 
 # Vault().crack_the_code()
 
-Generator().nextlevel('entry')
+# Generator().nextlevel('entry')
