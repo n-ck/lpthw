@@ -58,8 +58,10 @@ class Level():
 		entrylevel = Entry()
 		entrylevel()
 
+		gamescript = GameScript()
 
-class Entry():
+
+class Entry(Level):
 	# the opening level/scene of the game (entry of the bank)
 	def __init__(self):
 
@@ -67,22 +69,20 @@ class Entry():
 		correctanswers = Choices().entry_correct()
 		incorrectanswers = Choices().entry_incorrect()
 
+		# initialize the GameScript class
+		gamescript = GameScript()
+		# load the level description that matches the current level
+		gamescript.level_description('entry')
+
 		flag = True
 		user_input = raw_input("> ")
 
 		# working while loop to check for correct and incorrect answers:
 		while flag:
 			if user_input in correctanswers:
-				print "\nNext level:\n"
+				nextlevel = Teller()
+				nextlevel
 				flag = False
-
-				# next step is to automatically send the user to the next level:
-				
-				# Generator('entry').nextlevel()
-				# flag = False
-
-				youescaped = Escape()
-				youescaped()
 
 			elif user_input in incorrectanswers:
 				flag = False
@@ -93,17 +93,23 @@ class Entry():
 				user_input = raw_input("> ")
 
 
-class Teller():
+class Teller(Level):
 
 	def __init__(self):
-		print "You're now at the bank teller"
+		# print "You're now at the bank teller"
+
+		# Get game description for level teller
+		gamescript = GameScript()
+		gamescript.level_description('teller')
 
 
 class BackOffice():
 
 	def __init__(self):
-		print "You're now in the back office"
-
+		
+		# Get game description for level teller
+		gamescript = GameScript()
+		gamescript.level_description('back office')
 
 class Escape():
 	# Class for the final scene of the game, when the user has
@@ -148,43 +154,6 @@ class Generator():
 
 				Generator().loadnextlevel(levelvalue)
 
-	# def loadnextlevel(self, nextlevel):
-		# get next level from nextlevel function
-		# load next level based on list in alllevels
-
-		# alllevels = {
-		# 		'entry': Entry(),
-		# 		'teller': Teller(), 
-		# 		'back office': BackOffice(),
-		# 		# 'vault': Vault(),
-		# 		# 'tunnel': Tunnel(),
-		# 	}
-
-		# rendernext = self.nextlevel
-
-		# for key in alllevels:
-		# 	if rendernext == key:
-		# 		return rendernext[key]
-
-
-	## work in progress
-	# def generatenext(self):
-
-	# 	if self.level == "entry":
-	# 		entrylevel = Entry()
-	# 		entrylevel()
-	# 	elif nextlevel() == 'level 1':
-
-
-
-	## The generator class determines what level it is,
-	## and what level is generated next:
-
-	# 1. Get current level from the Class init
-	# 2. Get all items from the dictionary
-	# 3. Lookup where current level is in the dictionary
-	# 4. Then return the number + 1 
-	# 5. If the 
 
 class StartGame():
 	# start the game
@@ -195,11 +164,6 @@ class StartGame():
 		the_bank = Bank().bank_areas()
 		# set the current level, this statement will return the dict value 'entry'
 		currentlevel = the_bank['level 0']
-
-		# initialize the GameScript class
-		gamescript = GameScript()
-		# load the level description that matches the current level
-		gamescript.level_description(currentlevel)
 
 		# initialize the Level logic class
 		levellogic = Level()
@@ -234,6 +198,3 @@ class Vault():
 # initialize the StartGame class and start the game:
 StartGame().load_areas()
 
-# Vault().crack_the_code()
-
-# Generator().nextlevel('entry')

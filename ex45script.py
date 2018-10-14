@@ -28,16 +28,23 @@ class GameScript():
 		## Get level text based on a dictionary:
 
 		text = {
-				"entry": "\nYou arrived at the bank, ready to rob the contents of their vault, an estimated $25 million. You enter the bank cautious and inauspiciously, what is your next move?",
+				"entry": """\nYou arrived at the bank, ready to rob the contents of their vault, 
+							\nan estimated $25 million. You enter the bank cautious and inauspiciously, 
+							\nwhat is your next move...?\n""",
+
 				"teller": "\nYou're at the teller, try to not act suspicious",
-				"back office": "Great you sneak into the back office and hide in the janitors closet. You come out after the bank closes and all bank employees left. The laser alarm system is on, you have to avoid the alarm from going of while you have to disarm the alarmsystem temporarily..."
+
+				"back office": """Great you sneak into the back office and hide in the janitors closet. 
+								You come out after the bank closes and all bank employees left. The laser 
+								alarm system is on, you have to avoid the alarm from going of while you 
+								have to disarm the alarmsystem temporarily..."""
 
 
 		}
 
 		for key in text:
 			if level == key:
-				return text[key]
+				print text[key]
 
 
 
