@@ -16,7 +16,7 @@
 # Don't get seen by a camera
 
 
-from ex45script import *
+from ex45script import GameScript
 from ex45choices import Choices
 import random
 
@@ -76,6 +76,7 @@ class Entry(Level):
 
 		flag = True
 		user_input = raw_input("> ")
+		attempts = 1
 
 		# working while loop to check for correct and incorrect answers:
 		while flag:
@@ -88,9 +89,14 @@ class Entry(Level):
 				flag = False
 				gameover = Caught()
 				gameover()
+			elif attempts > 3:
+				gameover = Caught()
+				gameover()				
 			else:
 				print "Try again:\n"
 				user_input = raw_input("> ")
+				attempts = attempts + 1
+				print attempts
 
 
 class Teller(Level):
