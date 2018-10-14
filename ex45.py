@@ -60,6 +60,31 @@ class Level():
 
 		gamescript = GameScript()
 
+	def guess_answer(self):
+		'''While loop for every level:'''
+
+		flag = True
+		user_input = raw_input("> ")
+		attempts = 1
+
+		# working while loop to check for correct and incorrect answers:
+		while flag:
+			if user_input in correctanswers:
+				nextlevel = Teller()
+				nextlevel
+				flag = False
+			elif user_input in incorrectanswers:
+				flag = False
+				gameover = Caught()
+				gameover()
+			elif attempts > 3:
+				gameover = Caught()
+				gameover()				
+			else:
+				print "Try again:\n"
+				user_input = raw_input("> ")
+				attempts = attempts + 1
+
 
 class Entry(Level):
 	# the opening level/scene of the game (entry of the bank)
