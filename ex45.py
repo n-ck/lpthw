@@ -84,7 +84,6 @@ class Entry(Level):
 				nextlevel = Teller()
 				nextlevel
 				flag = False
-
 			elif user_input in incorrectanswers:
 				flag = False
 				gameover = Caught()
@@ -96,7 +95,6 @@ class Entry(Level):
 				print "Try again:\n"
 				user_input = raw_input("> ")
 				attempts = attempts + 1
-				print attempts
 
 
 class Teller(Level):
@@ -108,14 +106,129 @@ class Teller(Level):
 		gamescript = GameScript()
 		gamescript.level_description('teller')
 
+		# get choices/answers and assign the list to a variable correctanswers
+		correctanswers = Choices().teller_correct()
+		incorrectanswers = Choices().teller_incorrect()
+
+		flag = True
+		user_input = raw_input("> ")
+		attempts = 1
+
+		# working while loop to check for correct and incorrect answers:
+		while flag:
+			if user_input in correctanswers:
+				nextlevel = BackOffice()
+				nextlevel
+				flag = False
+			elif user_input in incorrectanswers:
+				flag = False
+				gameover = Caught()
+				gameover()
+			elif attempts > 3:
+				gameover = Caught()
+				gameover()				
+			else:
+				print "Try again:\n"
+				user_input = raw_input("> ")
+				attempts = attempts + 1
+
 
 class BackOffice():
 
 	def __init__(self):
 		
 		# Get game description for level teller
+		# Get game description for level teller
 		gamescript = GameScript()
 		gamescript.level_description('back office')
+
+		# get choices/answers and assign the list to a variable correctanswers
+		correctanswers = Choices().backoffice_correct()
+		incorrectanswers = Choices().backoffice_incorrect()
+
+		flag = True
+		user_input = raw_input("> ")
+		attempts = 1
+
+		# working while loop to check for correct and incorrect answers:
+		while flag:
+			if user_input in correctanswers:
+				nextlevel = Vault()
+				nextlevel
+				flag = False
+			elif user_input in incorrectanswers:
+				flag = False
+				gameover = Caught()
+				gameover()
+			elif attempts > 3:
+				gameover = Caught()
+				gameover()				
+			else:
+				print "Try again:\n"
+				user_input = raw_input("> ")
+				attempts = attempts + 1
+
+
+class Vault():
+	# last level of the game, guess the combination of the 
+	# vault to enter and steal all the money in there.
+	def crack_the_code(self):
+
+		print "You arrived at the bank's vault, try to unlock the vault spin the wheel left or right"
+	
+		Vault().unlock_safe('right')		
+		
+	def unlock_safe(self, correct):
+
+		self.correct = correct
+
+		firstattempt = raw_input("> ")
+		flag = True
+
+		while flag:
+			if firstattempt in correct:
+				print "correct"
+				flag = False
+			else:
+				print "try again"
+				firstattempt = raw_input("> ")
+
+
+class Tunnel():
+
+	def __init__(self):
+		
+		# Get game description for level teller
+		# Get game description for level teller
+		gamescript = GameScript()
+		gamescript.level_description('tunnel')
+
+		# get choices/answers and assign the list to a variable correctanswers
+		correctanswers = Choices().tunnel_correct()
+		incorrectanswers = Choices().tunnel_incorrect()
+
+		flag = True
+		user_input = raw_input("> ")
+		attempts = 1
+
+		# working while loop to check for correct and incorrect answers:
+		while flag:
+			if user_input in correctanswers:
+				nextlevel = Vault()
+				nextlevel
+				flag = False
+			elif user_input in incorrectanswers:
+				flag = False
+				gameover = Caught()
+				gameover()
+			elif attempts > 3:
+				gameover = Caught()
+				gameover()				
+			else:
+				print "Try again:\n"
+				user_input = raw_input("> ")
+				attempts = attempts + 1
+
 
 class Escape():
 	# Class for the final scene of the game, when the user has
@@ -176,30 +289,6 @@ class StartGame():
 		# load the level logic class
 		levellogic
 
-
-class Vault():
-	# last level of the game, guess the combination of the 
-	# vault to enter and steal all the money in there.
-	def crack_the_code(self):
-
-		print "You arrived at the bank's vault, try to unlock the vault spin the wheel left or right"
-	
-		Vault().unlock_safe('right')		
-		
-	def unlock_safe(self, correct):
-
-		self.correct = correct
-
-		firstattempt = raw_input("> ")
-		flag = True
-
-		while flag:
-			if firstattempt in correct:
-				print "correct"
-				flag = False
-			else:
-				print "try again"
-				firstattempt = raw_input("> ")
 
 # initialize the StartGame class and start the game:
 StartGame().load_areas()
