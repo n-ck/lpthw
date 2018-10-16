@@ -43,10 +43,13 @@ but don't fill out an application right away!
 \nAfter getting the information, 
 make an excuse to use the bathroom...\n""",
 
-				"back office": """Great you sneak into the back office and hide in the janitors closet. 
+				"back office": """Great on your way to the bathroom you sneak 
+into the back office and hide in the janitors closet. 
 You come out after the bank closes and all bank employees left. The laser 
 alarm system is on, you have to avoid the alarm from going of while you 
-have to disarm the alarmsystem temporarily..."""
+have to disarm the alarmsystem temporarily...\n""",
+
+				"tunnel": """You made it to the tunnel\n"""
 
 		}
 

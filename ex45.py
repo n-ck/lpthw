@@ -179,7 +179,7 @@ class BackOffice():
 		while flag:
 			if user_input in correctanswers:
 				nextlevel = Vault()
-				nextlevel
+				nextlevel.crack_the_code()
 				flag = False
 			elif user_input in incorrectanswers:
 				flag = False
@@ -199,11 +199,11 @@ class Vault():
 	# vault to enter and steal all the money in there.
 	def crack_the_code(self):
 
-		print "You arrived at the bank's vault, try to unlock the vault spin the wheel left or right"
+		print "\nYou arrived at the bank's vault, try to unlock the vault spin the wheel left or right\n"
 	
-		Vault().unlock_safe('right')		
+		Vault().first_attempt('right')		
 		
-	def unlock_safe(self, correct):
+	def first_attempt(self, correct):
 
 		self.correct = correct
 
@@ -212,7 +212,42 @@ class Vault():
 
 		while flag:
 			if firstattempt in correct:
-				print "correct"
+				flag = False
+				Vault().second_attempt('left')
+			else:
+				print "try again"
+				firstattempt = raw_input("> ")
+
+	def second_attempt(self, correct):
+
+		print "\nNice, second move left or right?\n"
+
+		self.correct = correct
+
+		firstattempt = raw_input("> ")
+		flag = True
+
+		while flag:
+			if firstattempt in correct:
+				Vault().third_attempt('right')
+				flag = False
+			else:
+				print "try again"
+				firstattempt = raw_input("> ")
+
+	def third_attempt(self, correct):
+
+		print "\nGreat, one more turn... left or right?\n"
+
+		self.correct = correct
+
+		firstattempt = raw_input("> ")
+		flag = True
+
+		while flag:
+			if firstattempt in correct:
+				print "\nCORRECT YOU'RE IN THE SAFE!\n"
+				Tunnel()
 				flag = False
 			else:
 				print "try again"
@@ -316,5 +351,7 @@ class StartGame():
 
 
 # initialize the StartGame class and start the game:
-StartGame().load_areas()
+# StartGame().load_areas()
+
+Vault().crack_the_code()
 

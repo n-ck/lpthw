@@ -2,7 +2,7 @@ class Choices():
 
 	def entry_correct(self):
 		"""Correct answers for the entry level"""
-		correct = ['bathroom', 'office', 'plant']
+		correct = ['teller', 'calm', 'line']
 		return correct
 
 	def entry_incorrect(self):
