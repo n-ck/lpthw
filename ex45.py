@@ -179,7 +179,7 @@ class BackOffice():
 		while flag:
 			if user_input in correctanswers:
 				nextlevel = Vault()
-				nextlevel.crack_the_code()
+				nextlevel.first_attempt()
 				flag = False
 			elif user_input in incorrectanswers:
 				flag = False
@@ -195,63 +195,57 @@ class BackOffice():
 
 
 class Vault():
-	# last level of the game, guess the combination of the 
-	# vault to enter and steal all the money in there.
-	def crack_the_code(self):
+	# Guess the combination of the vault to enter and steal all the money in there.
 
-		print "\nYou arrived at the bank's vault, try to unlock the vault spin the wheel left or right\n"
-	
-		Vault().first_attempt('right')		
-		
-	def first_attempt(self, correct):
+	def next_vault_level(self, level):
+
+		self.level = level
+
+		if level == "second":
+			Vault().second_attempt()
+		elif level == "third":
+			Vault().third_attempt()
+		elif level == "success":
+			"\nYES YOU'RE IN THE VAULT\n"
+			Tunnel()
+
+	def turn_vault_wheel(self, correct, nextlevel):
 
 		self.correct = correct
+		self.nextlevel = nextlevel
 
-		firstattempt = raw_input("> ")
+		turnwheel = raw_input("> ")
 		flag = True
 
 		while flag:
-			if firstattempt in correct:
+			if turnwheel in correct:
 				flag = False
-				Vault().second_attempt('left')
+				Vault().next_vault_level(nextlevel)
 			else:
 				print "try again"
-				firstattempt = raw_input("> ")
+				turnwheel = raw_input("> ")
+		
+	def first_attempt(self):
 
-	def second_attempt(self, correct):
+		print "\nYou arrived at the bank's vault, try to unlock the vault spin the wheel left or right\n"
+
+		attempt = Vault().turn_vault_wheel('right', 'second')
+		
+
+	def second_attempt(self):
 
 		print "\nNice, second move left or right?\n"
 
-		self.correct = correct
+		attempt = Vault().turn_vault_wheel('left', 'third')
 
-		firstattempt = raw_input("> ")
-		flag = True
 
-		while flag:
-			if firstattempt in correct:
-				Vault().third_attempt('right')
-				flag = False
-			else:
-				print "try again"
-				firstattempt = raw_input("> ")
-
-	def third_attempt(self, correct):
+	def third_attempt(self):
 
 		print "\nGreat, one more turn... left or right?\n"
 
-		self.correct = correct
+		attempt = Vault().turn_vault_wheel('right', 'success')
 
-		firstattempt = raw_input("> ")
-		flag = True
 
-		while flag:
-			if firstattempt in correct:
-				print "\nCORRECT YOU'RE IN THE SAFE!\n"
-				Tunnel()
-				flag = False
-			else:
-				print "try again"
-				firstattempt = raw_input("> ")
 
 
 class Tunnel():
@@ -274,7 +268,7 @@ class Tunnel():
 		# working while loop to check for correct and incorrect answers:
 		while flag:
 			if user_input in correctanswers:
-				nextlevel = Vault()
+				nextlevel = Escape()
 				nextlevel
 				flag = False
 			elif user_input in incorrectanswers:
@@ -351,7 +345,5 @@ class StartGame():
 
 
 # initialize the StartGame class and start the game:
-# StartGame().load_areas()
-
-Vault().crack_the_code()
+StartGame().load_areas()
 
