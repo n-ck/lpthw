@@ -7,29 +7,7 @@ class GameScript():
 
 		self.level = level
 
-		## Get level text based on if else statements:
-
-		# if level == "entry":
-		# 	print "\nYou're entering the bank"
-
-		# if level == "teller":
-		# 	print "\nYou're at the teller, try to not act suspicious"
-
-		# if level == "back office":
-		# 	print "\nYou made it to the back office"
-
-		# if level == "vault":
-		# 	print "\nYou're at the vault, try to get the right combination"
-
-		# if level == "tunnel":
-		# 	print "\nYou made it to the tunnel"
-
-
-		## Get level text based on a dictionary:
-
 		print "\n-----"
-
-		# print "\nBANK ROBBERY GAME\n"
 
 		text = {
 				"entry": """\nYou arrived at the bank, ready to rob the contents 
@@ -43,31 +21,18 @@ but don't fill out an application right away!
 \nAfter getting the information, 
 make an excuse to use the bathroom...\n""",
 
-				"back office": """Great on your way to the bathroom you sneak 
+				"back office": """\nGreat on your way to the bathroom you sneak 
 into the back office and hide in the janitors closet. 
 You come out after the bank closes and all bank employees left. The laser 
 alarm system is on, you have to avoid the alarm from going of while you 
 have to disarm the alarmsystem temporarily...\n""",
 
-				"tunnel": """You made it to the tunnel\n"""
+				"tunnel": """Awesome, you made it to the tunnel, you started
+digging the tunnel from the other side months ago, now it's time for the last
+step. What are you doing next...?\n"""
 
 		}
 
 		for key in text:
 			if level == key:
 				print text[key]
-
-
-
-# If bathroom:
-# You enter the lobby, wait in line, then go to the bathroom and hide in one of the ac vents in the bathroom till the bank closes down.
-
-# If back office:
-
-# If smokebomb:
-# Great you can see the laser detector streams now and can manouver through them, go to the main alarm system and disarm it.
-
-# If flower:
-# You throw flower in the air to see the lasers, now you can mover through the laser detectors.
-
-# Security guard:

@@ -21,7 +21,7 @@ from ex45choices import Choices
 import random
 
 
-class Bank():
+class Bank(object):
 	#Has all rooms, doors, vault and tunnel
 	def bank_areas(self):
 		'''Store a list of all levels in the a variable'''
@@ -34,7 +34,7 @@ class Bank():
 		return areas
 
 
-class Caught():
+class Caught(object):
 	# when you get caught by security/the police
 	def __init__(self):
 
@@ -54,17 +54,18 @@ class Caught():
 		exit(0)
 
 
-class Level():
+class Level(object):
 	# parent class for every level
 
 	def __init__(self):
+		'''get the level name from the class parameter'''
 		entrylevel = Entry()
 		entrylevel()
 
 		gamescript = GameScript()
 
 	def guess_answer(self):
-		'''While loop for every level:'''
+		'''While loop to initalize and load every level'''
 
 		flag = True
 		user_input = raw_input("> ")
@@ -161,7 +162,7 @@ class Teller(Level):
 				attempts = attempts + 1
 
 
-class BackOffice():
+class BackOffice(object):
 
 	def __init__(self):
 		
@@ -197,7 +198,7 @@ class BackOffice():
 				attempts = attempts + 1
 
 
-class Vault():
+class Vault(object):
 	# Guess the combination of the vault to enter and steal 
 	# all the money in there.
 
@@ -232,7 +233,7 @@ class Vault():
 	def first_attempt(self):
 
 		print """\nYou arrived at the bank's vault, try to 
-		unlock the vault spin the wheel left or right\n"""
+unlock the vault spin the wheel left or right\n"""
 
 		attempt = Vault().turn_vault_wheel('right', 'second')
 		
@@ -251,9 +252,7 @@ class Vault():
 		attempt = Vault().turn_vault_wheel('right', 'success')
 
 
-
-
-class Tunnel():
+class Tunnel(object):
 
 	def __init__(self):
 		
@@ -289,7 +288,7 @@ class Tunnel():
 				attempts = attempts + 1
 
 
-class Escape():
+class Escape(object):
 	# Class for the final scene of the game, when the user has
 	# successfully escaped.
 	def __init__(self):
@@ -297,9 +296,8 @@ class Escape():
 		exit(0)
 
 
-class Generator():
-	# def __init__(self, level):
-	# 	self.level = level
+class Generator(object):
+	'''Generator class is currently not being used to load the next level'''
 
 	def nextlevel(self, level):
 		# initialize the Bank class 
@@ -329,24 +327,26 @@ class Generator():
 				levelvalue = levels[getnext]
 
 				# print levelvalue
-
 				Generator().loadnextlevel(levelvalue)
 
 
-class StartGame():
-	# start the game
+class StartGame(object):
+	# class to start the game
 
 	def load_areas(self):
+
+		print "\n-----"
+
+		print "\nBANK ROBBERY GAME"
 
 		# initialize the Bank class 
 		the_bank = Bank().bank_areas()
 		# set the current level, this statement will return dict value 'entry'
 		currentlevel = the_bank['level 0']
 
-		# initialize the Level logic class
-		levellogic = Level()
-		# load the level logic class
-		levellogic
+		# initialize and load the Level logic class
+		Level()
+
 
 
 # initialize the StartGame class and start the game:
