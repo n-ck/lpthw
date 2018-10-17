@@ -24,8 +24,10 @@ import random
 class Bank():
 	#Has all rooms, doors, vault and tunnel
 	def bank_areas(self):
+		'''Store a list of all levels in the a variable'''
 		areas = {'level 0': 'entry', 'level 1': 'teller', 
-				'level 2': 'back office', 'level 3': 'vault', 'level 4': 'tunnel'
+				'level 2': 'back office', 'level 3': 'vault', 
+				'level 4': 'tunnel'
 			}
 
 		# return statement so you can access the dictionary
@@ -54,6 +56,7 @@ class Caught():
 
 class Level():
 	# parent class for every level
+
 	def __init__(self):
 		entrylevel = Entry()
 		entrylevel()
@@ -195,7 +198,8 @@ class BackOffice():
 
 
 class Vault():
-	# Guess the combination of the vault to enter and steal all the money in there.
+	# Guess the combination of the vault to enter and steal 
+	# all the money in there.
 
 	def next_vault_level(self, level):
 
@@ -227,7 +231,8 @@ class Vault():
 		
 	def first_attempt(self):
 
-		print "\nYou arrived at the bank's vault, try to unlock the vault spin the wheel left or right\n"
+		print """\nYou arrived at the bank's vault, try to 
+		unlock the vault spin the wheel left or right\n"""
 
 		attempt = Vault().turn_vault_wheel('right', 'second')
 		
@@ -335,7 +340,7 @@ class StartGame():
 
 		# initialize the Bank class 
 		the_bank = Bank().bank_areas()
-		# set the current level, this statement will return the dict value 'entry'
+		# set the current level, this statement will return dict value 'entry'
 		currentlevel = the_bank['level 0']
 
 		# initialize the Level logic class
