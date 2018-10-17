@@ -30,7 +30,7 @@ class Bank(object):
 				'level 4': 'tunnel'
 			}
 
-		# return statement so you can access the dictionary
+		# return areas variable so you can access the dictionary
 		return areas
 
 
