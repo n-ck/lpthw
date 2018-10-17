@@ -221,14 +221,18 @@ class Vault(object):
 
 		turnwheel = raw_input("> ")
 		flag = True
+		attempt = 1
 
 		while flag:
 			if turnwheel in correct:
 				flag = False
 				Vault().next_vault_level(nextlevel)
-			else:
+			elif attempt < 2:
 				print "try again"
+				attempt = attempt + 1
 				turnwheel = raw_input("> ")
+			else:
+				Caught()
 		
 	def first_attempt(self):
 
@@ -350,5 +354,6 @@ class StartGame(object):
 
 
 # initialize the StartGame class and start the game:
-StartGame().load_areas()
+# StartGame().load_areas()
 
+Vault().first_attempt()
