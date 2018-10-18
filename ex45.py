@@ -57,25 +57,23 @@ class Caught(object):
 class Level(object):
 	# parent class for every level
 
-	def __init__(self):
-		'''get the level name from the class parameter'''
-		entrylevel = Entry()
-		entrylevel.start()
+	# def __init__(self):
+	# 	'''get the level name from the class parameter'''
+	# 	entrylevel = Entry()
+	# 	entrylevel.start()
+
+	# def __init__(self):
+
+		# self.correctanswers = Choices().entry_correct()
+		# self.incorrectanswers = Choices().entry_incorrect()
 
 
-class Entry(object):
-	# the opening level/scene of the game (entry of the bank)
-	def start(self):
+	def answerloop(self, level):
 
-		# get choices/answers and assign the list to a variable correctanswers
 		correctanswers = Choices().entry_correct()
 		incorrectanswers = Choices().entry_incorrect()
 
-		# initialize the GameScript class
-		gamescript = GameScript()
-		# load the level description that matches the current level
-		gamescript.level_description('entry')
-
+		self.level = level
 		flag = True
 		user_input = raw_input("> ")
 		attempts = 1
@@ -97,6 +95,57 @@ class Entry(object):
 				print "Try again:\n"
 				user_input = raw_input("> ")
 				attempts = attempts + 1
+
+
+	def nextlevel(self, level):
+
+		if level == 'entry':
+			Teller().start()
+		else:
+			Caught()
+
+
+class Entry(Level):
+	
+	def __init__(self):
+		# initialize the GameScript class
+		gamescript = GameScript()
+		# load the level description that matches the current level
+		gamescript.level_description('entry')
+
+	# the opening level/scene of the game (entry of the bank)
+	# def __init__(self):
+
+		# get choices/answers and assign the list to a variable correctanswers
+		# correctanswers = Choices().entry_correct()
+		# incorrectanswers = Choices().entry_incorrect()
+
+		# # initialize the GameScript class
+		# gamescript = GameScript()
+		# # load the level description that matches the current level
+		# gamescript.level_description('entry')
+
+		# flag = True
+		# user_input = raw_input("> ")
+		# attempts = 1
+
+		# # working while loop to check for correct and incorrect answers:
+		# while flag:
+		# 	if user_input in correctanswers:
+		# 		nextlevel = Teller().start()
+		# 		nextlevel
+		# 		flag = False
+		# 	elif user_input in incorrectanswers:
+		# 		flag = False
+		# 		gameover = Caught()
+		# 		gameover()
+		# 	elif attempts > 3:
+		# 		gameover = Caught()
+		# 		gameover()				
+		# 	else:
+		# 		print "Try again:\n"
+		# 		user_input = raw_input("> ")
+		# 		attempts = attempts + 1
 
 
 class Teller(object):
@@ -327,6 +376,8 @@ class StartGame(object):
 
 
 # initialize the StartGame class and start the game:
-StartGame().load_areas()
+# StartGame().load_areas()
 
 # Vault().first_attempt()
+
+Entry().answerloop('entry')
