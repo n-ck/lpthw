@@ -22,13 +22,14 @@ import random
 
 
 class Bank(object):
-	#Has all rooms, doors, vault and tunnel
+	# Has all rooms, doors, vault and tunnel
+	
 	def bank_areas(self):
 		'''Store a list of all levels in the a variable'''
 		areas = {'level 0': 'entry', 'level 1': 'teller', 
 				'level 2': 'back office', 'level 3': 'vault', 
 				'level 4': 'tunnel'
-			}
+				}
 
 		# return areas variable so you can access the dictionary
 		return areas
@@ -36,11 +37,13 @@ class Bank(object):
 
 class Caught(object):
 	# when you get caught by security/the police
+
 	def __init__(self):
 
 		reasons = [
 			'You got noticed on the security camera', 
-			'The alarm went off','The police caught you',
+			'The alarm went off',
+			'The police caught you',
 			'You set off a motion-detection laser',
 			'A bank security guard caught you'
 		]
@@ -282,12 +285,11 @@ class Tunnel(object):
 
 	def start(self):
 		
-		# Get game description for level teller
-		# Get game description for level teller
+		# Get game description for level tunnel
 		gamescript = GameScript()
 		gamescript.level_description('tunnel')
 
-		# get choices/answers and assign the list to a variable correctanswers
+		# Get choices/answers and assign the list to a variable correctanswers
 		correctanswers = Choices().tunnel_correct()
 		incorrectanswers = Choices().tunnel_incorrect()
 
@@ -295,7 +297,7 @@ class Tunnel(object):
 		user_input = raw_input("> ")
 		attempts = 1
 
-		# working while loop to check for correct and incorrect answers:
+		# Working while loop to check for correct and incorrect answers:
 		while flag:
 			if user_input in correctanswers:
 				nextlevel = Escape().the_end()
@@ -317,6 +319,7 @@ class Tunnel(object):
 class Escape(object):
 	# Class for the final scene of the game, when the user has
 	# successfully escaped.
+
 	def the_end(self):
 		print "\nCongratulations, you successfully escaped with the money!\n"
 		exit(0)
@@ -326,7 +329,7 @@ class Generator(object):
 	'''Generator class is currently not being used to load the next level'''
 
 	def nextlevel(self, level):
-		# initialize the Bank class 
+		# Initialize the Bank class 
 
 		self.level = level
 
