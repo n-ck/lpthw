@@ -60,39 +60,12 @@ class Level(object):
 	def __init__(self):
 		'''get the level name from the class parameter'''
 		entrylevel = Entry()
-		entrylevel()
-
-		gamescript = GameScript()
-
-	def guess_answer(self):
-		'''While loop to initalize and load every level'''
-
-		flag = True
-		user_input = raw_input("> ")
-		attempts = 1
-
-		# working while loop to check for correct and incorrect answers:
-		while flag:
-			if user_input in correctanswers:
-				nextlevel = Teller()
-				nextlevel
-				flag = False
-			elif user_input in incorrectanswers:
-				flag = False
-				gameover = Caught()
-				gameover()
-			elif attempts > 3:
-				gameover = Caught()
-				gameover()				
-			else:
-				print "Try again:\n"
-				user_input = raw_input("> ")
-				attempts = attempts + 1
+		entrylevel.start()
 
 
-class Entry(Level):
+class Entry(object):
 	# the opening level/scene of the game (entry of the bank)
-	def __init__(self):
+	def start(self):
 
 		# get choices/answers and assign the list to a variable correctanswers
 		correctanswers = Choices().entry_correct()
@@ -110,7 +83,7 @@ class Entry(Level):
 		# working while loop to check for correct and incorrect answers:
 		while flag:
 			if user_input in correctanswers:
-				nextlevel = Teller()
+				nextlevel = Teller().start()
 				nextlevel
 				flag = False
 			elif user_input in incorrectanswers:
@@ -126,9 +99,9 @@ class Entry(Level):
 				attempts = attempts + 1
 
 
-class Teller(Level):
+class Teller(object):
 
-	def __init__(self):
+	def start(self):
 		# print "You're now at the bank teller"
 
 		# Get game description for level teller
@@ -146,7 +119,7 @@ class Teller(Level):
 		# working while loop to check for correct and incorrect answers:
 		while flag:
 			if user_input in correctanswers:
-				nextlevel = BackOffice()
+				nextlevel = BackOffice().start()
 				nextlevel
 				flag = False
 			elif user_input in incorrectanswers:
@@ -164,7 +137,7 @@ class Teller(Level):
 
 class BackOffice(object):
 
-	def __init__(self):
+	def start(self):
 		
 		# Get game description for level teller
 		# Get game description for level teller
@@ -212,7 +185,7 @@ class Vault(object):
 			Vault().third_attempt()
 		elif level == "success":
 			"\nYES YOU'RE IN THE VAULT\n"
-			Tunnel()
+			Tunnel().start()
 
 	def turn_vault_wheel(self, correct, nextlevel):
 
@@ -240,7 +213,7 @@ class Vault(object):
 unlock the vault spin the wheel left or right\n"""
 
 		attempt = Vault().turn_vault_wheel('right', 'second')
-		
+
 
 	def second_attempt(self):
 
@@ -258,7 +231,7 @@ unlock the vault spin the wheel left or right\n"""
 
 class Tunnel(object):
 
-	def __init__(self):
+	def start(self):
 		
 		# Get game description for level teller
 		# Get game description for level teller
@@ -276,7 +249,7 @@ class Tunnel(object):
 		# working while loop to check for correct and incorrect answers:
 		while flag:
 			if user_input in correctanswers:
-				nextlevel = Escape()
+				nextlevel = Escape().the_end()
 				nextlevel
 				flag = False
 			elif user_input in incorrectanswers:
@@ -295,7 +268,7 @@ class Tunnel(object):
 class Escape(object):
 	# Class for the final scene of the game, when the user has
 	# successfully escaped.
-	def __init__(self):
+	def the_end(self):
 		print "\nCongratulations, you successfully escaped with the money!\n"
 		exit(0)
 
@@ -354,6 +327,6 @@ class StartGame(object):
 
 
 # initialize the StartGame class and start the game:
-# StartGame().load_areas()
+StartGame().load_areas()
 
-Vault().first_attempt()
+# Vault().first_attempt()
