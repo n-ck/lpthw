@@ -22,7 +22,7 @@ import random
 
 
 class Bank(object):
-	# Has all rooms, doors, vault and tunnel
+	''' Has all rooms, doors, vault and tunnel '''
 	
 	def bank_areas(self):
 		'''Store a list of all levels in the a variable'''
@@ -36,7 +36,7 @@ class Bank(object):
 
 
 class Caught(object):
-	# when you get caught by security/the police
+	''' when you get caught by security/the police '''
 
 	def __init__(self):
 
@@ -58,7 +58,7 @@ class Caught(object):
 
 
 class Level(object):
-	# parent class for every level
+	''' parent class for entry level '''
 
 	# def __init__(self):
 	# 	'''get the level name from the class parameter'''
@@ -224,8 +224,8 @@ class BackOffice(object):
 
 
 class Vault(object):
-	# Guess the combination of the vault to enter and steal 
-	# all the money in there.
+	''' Guess the combination of the vault to enter and steal 
+	 all the money in there. '''
 
 	def next_vault_level(self, level):
 
@@ -317,8 +317,8 @@ class Tunnel(object):
 
 
 class Escape(object):
-	# Class for the final scene of the game, when the user has
-	# successfully escaped.
+	''' Class for the final scene of the game, when the user has
+	# successfully escaped '''
 
 	def the_end(self):
 		print "\nCongratulations, you successfully escaped with the money!\n"
@@ -360,7 +360,7 @@ class Generator(object):
 
 
 class StartGame(object):
-	# class to start the game
+	''' class to start the game '''
 
 	def load_areas(self):
 
