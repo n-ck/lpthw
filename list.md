@@ -226,6 +226,6 @@ Bottom up:
 https://www.python.org/dev/peps/pep-0008/
 
 
-*Left off with exercise 44*
+*Left off with exercise 47*
 
-*Left off at page 193/177[PDF] - Exercise 44*
+*Left off at page 208/191[PDF] - Exercise 47*
