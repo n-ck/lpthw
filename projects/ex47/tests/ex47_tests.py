@@ -2,11 +2,11 @@ from nose.tools import *
 from ex47.game import Room
 
 def test_room():
-	gold = Room("GoldRoom"
+	gold = Room("GoldRoom",
 				"""This room has gold in it you can grab. There's a
 				door to the north.""")
 	assert_equal(gold.name, "GoldRoom")
-	asesrt_equal(gold.paths, [])
+	assert_equal(gold.paths, {})
 
 def test_room_paths():
 	center = Room("Center", "Test room in the center.")
