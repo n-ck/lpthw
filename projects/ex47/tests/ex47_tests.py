@@ -7,6 +7,9 @@ def test_room():
 				door to the north.""")
 	assert_equal(gold.name, "GoldRoom")
 	assert_equal(gold.paths, {})
+	assert_equal(gold.description, "test description") # example test that works
+	assert_equal(gold.paths, []) # example test that works
+	assert_equal(gold.paths, "blabla") # example test that fails
 
 def test_room_paths():
 	center = Room("Center", "Test room in the center.")
@@ -16,6 +19,7 @@ def test_room_paths():
 	center.add_paths({'north': north, 'south': south})
 	assert_equal(center.go('north'), north)
 	assert_equal(center.go('south'), south)
+	assert_equal(center.go('south'), north) # example test that fails
 
 def test_map():
 	start = Room("Start", "You can go west and down a hole.")
