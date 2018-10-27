@@ -28,7 +28,7 @@ def scan(sentence):
 
 		elif word in nouns:
 			param = "noun"
-			
+
 
 	while splitsentence != []:
 		for word in splitsentence:
@@ -36,6 +36,7 @@ def scan(sentence):
 			tuplecombo = (param, newword)
 			newtuple.append(tuplecombo)
 
+	newtuple.reverse()
 	return newtuple
  	
 # # needs an if statement, if single word don't create a list, just print the tuple
