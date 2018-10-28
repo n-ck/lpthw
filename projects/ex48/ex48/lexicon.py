@@ -76,6 +76,8 @@ def scan_working(sentence):
 					int(word)
 					param = "number"
 					newword = int(word)
+					## another way to convert the string in a number:
+					# newword = int(word)
 
 				except ValueError:
 					param = "error"
