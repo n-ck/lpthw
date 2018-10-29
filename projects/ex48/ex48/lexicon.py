@@ -7,6 +7,7 @@ def scan(sentence):
 	verbs = ["go", "stop", "kill", "eat"]
 	stopwords = ["the", "in", "of", "from", "at", "it"]
 	nouns = ["door", "bear", "princess", "cabinet"]
+	adverbs = ["abruptly", "firmly", "quickly"]
 
 	newtuple = []
 
@@ -16,6 +17,10 @@ def scan(sentence):
 				int(word)
 				param = "number"
 				newword = int(splitsentence.pop())
+				
+				## another way to convert the string in a number:
+				# singlenewword = splitsentence.pop()
+				# neword = singlenewword.digit()
 
 			except ValueError:
 				newword = splitsentence.pop()
@@ -31,6 +36,9 @@ def scan(sentence):
 
 				elif word in nouns:
 					param = "noun"
+
+				elif word in adverbs:
+					param = "adverb"
 
 				else:
 					param = "error"
@@ -76,8 +84,6 @@ def scan_working(sentence):
 					int(word)
 					param = "number"
 					newword = int(word)
-					## another way to convert the string in a number:
-					# newword = int(word)
 
 				except ValueError:
 					param = "error"

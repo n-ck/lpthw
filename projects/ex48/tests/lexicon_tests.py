@@ -28,6 +28,12 @@ def test_nouns():
 	assert_equal(result, [('noun', 'bear'),
 						  ('noun', 'princess')])
 
+def test_adverbs():
+	assert_equal(lexicon.scan("abruptly"), [('adverb', 'abruptly')])
+	result = lexicon.scan("quickly firmly")
+	assert_equal(result, [('adverb', 'quickly'),
+						   ('adverb', 'firmly')])
+
 def test_numbers():
 	assert_equal(lexicon.scan("1234"), [('number', 1234)])
 	result = lexicon.scan("3 91234")
