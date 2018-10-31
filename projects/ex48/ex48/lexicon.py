@@ -1,6 +1,6 @@
 ## Working scan function, passes all 6 tests
 def scan(sentence):
-	sentence = sentence.lower()
+	# sentence = sentence.lower()
 	splitsentence = sentence.split()
 
 	directions = ["north", "south", "east", "west",
@@ -54,14 +54,14 @@ def scan(sentence):
 
 ## Test output:
 
-print scan("north")
+# print scan("north")
 
-print scan("north south east")
+# print scan("north south east")
 
-print scan("ASDFADFASDF")
+# print scan("ASDFADFASDF")
 
-print scan("bear IAS princess")
+# print scan("bear IAS princess")
 
-print scan("1234")
+# print scan("1234")
 
-print scan("3 91234")
+# print scan("3 91234")
