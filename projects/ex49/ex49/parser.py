@@ -74,7 +74,14 @@ def parse_sentence(word_list):
 		raise ParserError("Must start with subject, object or ver or not: %s" % start)
 
 
-print peek("princess")
+# wordlist = ["kill", "the", "princess"]
+# print peek(wordlist)
+
+# wordlist = ["kill", "the", "princess"]
+# print match(wordlist)
+
+wordlist = ["kill", "the", "princess"]
+skip(wordlist, "kill the princess")
 
 # print match("kill the princess", "kill the princess")
 
