@@ -2,13 +2,14 @@ class ParserError(Exception):
 	pass
 
 
-class Sentence(Object):
+class Sentence():
 
 	def __init__(self, subject, verb, object):
 		# remember we take ('noun', 'princess') tuples and convert them
 		self.subject = subject[1]
 		self.verb = verb[1]
 		self.object = object[1]
+
 
 def peek(word_list):
 	if word_list:
@@ -19,7 +20,7 @@ def peek(word_list):
 
 def match(word_list, expecting):
 	if word_list:
-		word = word_list.pop()
+		word = word_list.pop(0)
 
 		if word[0] == expecting:
 			return word
@@ -63,7 +64,7 @@ def parse_sentence(word_list):
 
 	start = peek(word_list)
 
-	if start = 'noun':
+	if start == 'noun':
 		subj = match(word_list, 'noun')
 		return parse_subject(word_list, subj)
 	elif start == 'verb':
@@ -71,3 +72,9 @@ def parse_sentence(word_list):
 		return parse_subject(word_list, ('noun', 'player'))
 	else:
 		raise ParserError("Must start with subject, object or ver or not: %s" % start)
+
+
+print peek("princess")
+
+# print match("kill the princess", "kill the princess")
+
