@@ -74,14 +74,19 @@ def parse_sentence(word_list):
 		raise ParserError("Must start with subject, object or ver or not: %s" % start)
 
 
-# wordlist = ["kill", "the", "princess"]
-# print peek(wordlist)
-
-# wordlist = ["kill", "the", "princess"]
-# print match(wordlist)
-
 wordlist = ["kill", "the", "princess"]
-skip(wordlist, "kill the princess")
+
+print "\npeek function:"
+print peek(wordlist)
+
+print "\nmatch function:"
+print match(wordlist, "k")
+
+print "s\nkip function:"
+print skip(wordlist, ["kill", "the", "princess"])
+
+# print "\nparse_verb function:"
+# print parse_verb(wordlist)
 
 # print match("kill the princess", "kill the princess")
 

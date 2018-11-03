@@ -13,7 +13,7 @@ def test_match():
 
 def test_skip():
 	wordlist = ["kill", "the", "princess"]
-	assert_equal(parser.skip(wordlist, )
+	assert_equal(parser.skip(wordlist, "k"), None)
 
 # def test_directions():
 # 	assert_equal(lexicon.scan("north"), [('direction', 'north')])
