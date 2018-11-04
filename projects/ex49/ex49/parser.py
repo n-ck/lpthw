@@ -12,6 +12,7 @@ class Sentence():
 
 
 def peek(word_list):
+	## A way to 'peek' at a potential tuple so we can make some decisions.
 	if word_list:
 		word = word_list[0]
 		return word[0]
@@ -19,6 +20,8 @@ def peek(word_list):
 		return None
 
 def match(word_list, expecting):
+	## A way to 'match' different types of tuples that we 
+	## expect in our subject-verb-object setup.
 	if word_list:
 		word = word_list.pop(0)
 
@@ -31,6 +34,8 @@ def match(word_list, expecting):
 		return None
 
 def skip(word_list, word_type):
+	## A way to 'skip' things we do not care about, 
+	## like stop words.
 	while peek(word_list) == word_type:
 		match(word_list, word_type)
 
@@ -74,19 +79,31 @@ def parse_sentence(word_list):
 		raise ParserError("Must start with subject, object or ver or not: %s" % start)
 
 
-wordlist = ["kill", "the", "princess"]
+wordlist = [("verb", "kill"),("stop", "the"),("noun", "player")]
 
-print "\npeek function:"
-print peek(wordlist)
+# print "\npeek function:"
+# print peek(wordlist)
 
-print "\nmatch function:"
-print match(wordlist, "k")
+# print "\nmatch function:"
+# print match(wordlist, "verb")
 
-print "s\nkip function:"
-print skip(wordlist, ["kill", "the", "princess"])
+# print "\nskip function:"
+# print skip(wordlist, "stop")
+
+# print "\nskip function: wordlist, stop:"
+# print skip(wordlist, "stop")
 
 # print "\nparse_verb function:"
 # print parse_verb(wordlist)
+
+# print "\nparse_object function:"
+# print parse_object(wordlist)
+
+# print "\nparse_subject function:"
+# print parse_subject(wordlist, "cat")
+
+print "\nparse_sentence function:"
+print parse_sentence(wordlist)
 
 # print match("kill the princess", "kill the princess")
 

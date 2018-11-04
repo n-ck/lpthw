@@ -2,18 +2,23 @@ from nose.tools import *
 from ex49 import parser
 
 def test_peek():
-	wordlist = ["kill", "the", "princess"]
-	assert_equal(parser.peek(wordlist), "k")
+	wordlist = wordlist = [("verb", "kill"),("stop", "the"),("noun", "princess")]
+	assert_equal(parser.peek(wordlist), "verb")
 	assert_equal(parser.peek(""), None)
 
 def test_match():
-	wordlist = ["kill", "the", "princess"]
-	assert_equal(parser.match(wordlist, "k"), "kill")
-	assert_equal(parser.match(wordlist, "l"), None)
+	wordlist = wordlist = [("verb", "kill"),("stop", "the"),("noun", "princess")]
+	assert_equal(parser.match(wordlist, "verb"), ("verb", "kill"))
+	assert_equal(parser.match(wordlist, "stop"), ("stop", "the"))
+	assert_equal(parser.match(wordlist, "run"), None)
 
 def test_skip():
-	wordlist = ["kill", "the", "princess"]
-	assert_equal(parser.skip(wordlist, "k"), None)
+	wordlist = [("verb", "kill"),("stop", "the"),("noun", "princess")]
+	assert_equal(parser.skip(wordlist, "kill"), None)
+
+def test_parse_objects():
+	pass
+
 
 # def test_directions():
 # 	assert_equal(lexicon.scan("north"), [('direction', 'north')])
