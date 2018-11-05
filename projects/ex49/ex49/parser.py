@@ -79,31 +79,45 @@ def parse_sentence(word_list):
 		raise ParserError("Must start with subject, object or ver or not: %s" % start)
 
 
-wordlist = [("verb", "kill"),("stop", "the"),("noun", "player")]
+### Test wordlist:
+
+# wordlist = [("verb", "kill"),("stop", "the"),("noun", "player")]
+
+
+### 3 Main functions:
 
 # print "\npeek function:"
 # print peek(wordlist)
+## Output: verb
 
 # print "\nmatch function:"
 # print match(wordlist, "verb")
+## Output: ('verb', 'kill')
 
 # print "\nskip function:"
 # print skip(wordlist, "stop")
+## Output: None
 
-# print "\nskip function: wordlist, stop:"
-# print skip(wordlist, "stop")
+
+### 4 Parse functions:
 
 # print "\nparse_verb function:"
 # print parse_verb(wordlist)
+## Output: ('verb', 'kill')
 
+# wordlist2 = [("noun", "princess")]
 # print "\nparse_object function:"
-# print parse_object(wordlist)
+# print parse_object(wordlist2)
+## Output: ('noun', 'princess')
 
+# wordlist3 = [("verb", "kill"),("noun", "player")]
+# subj = ("subject", "cat")
 # print "\nparse_subject function:"
-# print parse_subject(wordlist, "cat")
+# result = parse_subject(wordlist3, subj)
+# print "subject = %s, object = %s, verb = %s" % (result.subject, result.object, result.verb) 
 
-print "\nparse_sentence function:"
-print parse_sentence(wordlist)
+# wordlist4 = [("verb", "kill"), ("noun", "princess")]
+# print "\nparse_sentence function:"
+# result = parse_sentence(wordlist4)
 
-# print match("kill the princess", "kill the princess")
-
+# print "subject = %s, object = %s, verb = %s" % (result.subject, result.object, result.verb) 

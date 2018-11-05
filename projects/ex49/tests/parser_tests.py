@@ -16,8 +16,24 @@ def test_skip():
 	wordlist = [("verb", "kill"),("stop", "the"),("noun", "princess")]
 	assert_equal(parser.skip(wordlist, "kill"), None)
 
-def test_parse_objects():
-	pass
+def test_parse_verb():
+	wordlist = [("verb", "kill"),("stop", "the"),("noun", "princess")]
+	assert_equal(parser.parse_verb(wordlist), ("verb", "kill"))
+
+def test_parse_object():
+	wordlist = [("noun", "princess")]
+	assert_equal(parser.parse_object(wordlist), ("noun", "princess"))
+
+def test_parse_subject():
+	wordlist = [("verb", "kill"),("noun", "princess")]
+	subj = ("noun", "player")
+	result = parser.parse_subject(wordlist, subj)
+	assert_equal((result.subject, result.verb, result.object), ("player","kill","princess"))
+
+def test_parse_sentence():
+	wordlist = [("verb", "kill"), ("noun", "princess")]
+	result = parser.parse_sentence(wordlist)
+	assert_equal((result.subject, result.object, result.verb), ("player","princess","kill"))
 
 
 # def test_directions():
