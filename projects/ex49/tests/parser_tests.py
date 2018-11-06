@@ -19,10 +19,14 @@ def test_skip():
 def test_parse_verb():
 	wordlist = [("verb", "kill"),("stop", "the"),("noun", "princess")]
 	assert_equal(parser.parse_verb(wordlist), ("verb", "kill"))
+	wordlist2 = [("noun", "princess"),("stop", "the"),("verb", "kill")]
+	parsererror = parser.ParserError("Expected a verb next.")
+	assert_raises(parser.ParserError,parser.parse_verb, wordlist2)
 
 def test_parse_object():
 	wordlist = [("noun", "princess")]
 	assert_equal(parser.parse_object(wordlist), ("noun", "princess"))
+
 
 def test_parse_subject():
 	wordlist = [("verb", "kill"),("noun", "princess")]
