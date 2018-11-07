@@ -76,7 +76,7 @@ def parse_sentence(word_list):
 		# assume the subject is the player then
 		return parse_subject(word_list, ('noun', 'player'))
 	else:
-		raise ParserError("Must start with subject, object or ver or not: %s" % start)
+		raise ParserError("Must start with subject, object or verb or not: %s" % start)
 
 
 ### Test wordlist:

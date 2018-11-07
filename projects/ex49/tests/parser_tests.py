@@ -37,8 +37,17 @@ def test_parse_subject():
 	result = parser.parse_subject(wordlist, subj)
 	assert_equal((result.subject, result.verb, result.object), ("player","kill","princess"))
 
+	# wordlist2 = [("pronoun", "they"), ("adverb", "loudly")]
+	# subj = ("adjunct","tomorrow")
+	# result = parser.parse_subject(wordlist2, subj)
+	# assert_raises(parser.ParserError,parser.parse_subject, result.subject, result.verb, result.object)
+
 
 def test_parse_sentence():
 	wordlist = [("verb", "kill"), ("noun", "princess")]
 	result = parser.parse_sentence(wordlist)
 	assert_equal((result.subject, result.object, result.verb), ("player","princess","kill"))
+
+	# wordlist2 = [("adjunct", "yesterday"), ("noun", "princess")]
+	# result = parser.parse_sentence(wordlist)
+	# assert_raises(parser.ParserError,parser.parse_sentence, wordlist2)
