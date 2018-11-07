@@ -1,0 +1,15 @@
+$def with (message)
+<html>
+	<head>
+		<title>Test Page</title>
+		<link rel="stylesheet" type="text/css" href="/templates/style.css">
+	</head>
+<body>
+
+$if message:
+	<h1>$message</h1>
+$else:
+	<h1>No message found</h1>
+
+</body>
+</html>
