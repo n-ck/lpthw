@@ -1,0 +1,15 @@
+$def with (content)
+$var cssfile: templates/style.css
+
+<html>
+	<head>
+		<title>Foo</title>
+		<link rel="stylesheet" href="$cssfile" type="text/css">
+
+	</head>
+<body>
+
+$:content
+
+</body>
+</html>
