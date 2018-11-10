@@ -2,5 +2,9 @@ h1 {
 	font-family: 'Arial', sans-serif;
 	font-size: 20px;
 	font-weight: bold;
-	color: #ccc;
+	color: #666;
+}
+div#wrapper {
+    width: 1000px;
+    margin: 50px auto;
 }
