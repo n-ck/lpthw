@@ -6,6 +6,11 @@ urls = (
 	'/', 'Index',
 )
 
+
+## Run this in terminal before trying to run the game:
+#export PYTHONPATH=$PYTHONPATH:.
+
+
 app = web.application(urls, globals())
 
 
@@ -46,7 +51,7 @@ class GameEngine(object):
 		web.seeother("/game")
 
 
-if __name__="__main__":
+if __name__=="__main__":
 	app.run()
 
 
