@@ -13,12 +13,15 @@ def test_index():
 	# print "test 2 %s" % resp
 	assert_response(resp)
 
+	# session dict:
+	# {'ip': u'127.0.0.1', 'room': None, 'session_id': 'e5f756478a4a324b84deb8535015ea88b02d9629'}
+
 	# make sure default values work for the form
 	resp = app.request("/game", method="POST")
 	# print "test 3 %s" % resp
-	assert_response(resp, contains="Ghello")
+	assert_response(resp, contains="room")
 
-	# # test that we get expected values
+	## test that we get expected values
 	# data = {'data': 'Ghello'}
-	# resp = app.request("/hello", method="POST", data=data)
+	# resp = app.request("/game", method="POST", data=data)
 	# assert_response(resp, contains="Ghello")

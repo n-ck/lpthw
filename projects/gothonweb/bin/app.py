@@ -1,7 +1,6 @@
 import web
 from gothonweb import map
 
-# web.config.debug = False
 
 urls = (
 	'/game', 'GameEngine',
@@ -30,6 +29,7 @@ render = web.template.render('templates/', base="base")
 
 class Index(object):
 	def GET(self):
+
 		# this is used to "setup" the session with starting values
 		session.room = map.START
 		web.seeother("/game")
@@ -37,6 +37,10 @@ class Index(object):
 class GameEngine(object):
 	
 	def GET(self):
+		# render.show_room()
+
+		session.room = map.START
+
 		if session.room:
 			return render.show_room(room=session.room)
 		else:
