@@ -1,6 +1,8 @@
 import web
 from gothonweb import map
 
+# web.config.debug = False
+
 urls = (
 	'/game', 'GameEngine',
 	'/', 'Index',
@@ -42,7 +44,7 @@ class GameEngine(object):
 			return render.you_died()
 
 	def POST(self):
-		form - web.input(action=None)
+		form = web.input(action="Ghello")
 
 		# there is a bug here, can you fix it?
 		if session.room and form.action:

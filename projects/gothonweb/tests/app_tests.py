@@ -3,19 +3,22 @@ from bin.app import app
 from tests.tools import assert_response
 
 def test_index():
-	# check tat we get a 404 on the / URL
+	# check that we get a 303 on the / URL
 	resp = app.request("/")
-	assert_response(resp, status="404")
+	# print "test 1 %s" % resp
+	assert_response(resp, status="303")
 
-	# test our first GET request to /hello
-	resp = app.request("/hello")
+	# test our first GET request to /game
+	resp = app.request("/game")
+	# print "test 2 %s" % resp
 	assert_response(resp)
 
 	# make sure default values work for the form
-	resp = app.request("/hello", method="POST")
-	assert_response(resp, contains="Nobody")
+	resp = app.request("/game", method="POST")
+	# print "test 3 %s" % resp
+	assert_response(resp, contains="Ghello")
 
-	# test that we get expected values
-	data = {'name': 'Zed', 'greet':'Hola'}
-	resp = app.request("/hello", method="POST", data=data)
-	assert_response(resp, contains="Zed")
+	# # test that we get expected values
+	# data = {'data': 'Ghello'}
+	# resp = app.request("/hello", method="POST", data=data)
+	# assert_response(resp, contains="Ghello")
