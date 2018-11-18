@@ -10,9 +10,7 @@ urls = (
 ## Run this in terminal before trying to run the game:
 #export PYTHONPATH=$PYTHONPATH:.
 
-
 app = web.application(urls, globals())
-
 
 # little hack so that debug mode works with sessions
 if web.config.get('_sessions') is None:
@@ -54,11 +52,18 @@ class GameEngine(object):
 		## there is a bug here, can you fix it?
 
 		if form.action == "tell a joke":
-			print "print this"
-			session.room = map.START
-			render.show_room(room=session.room)
-		# else:
-		# 	render.you_died()
+			print form.action
+			# for key, value in session.items():
+			# 	print value 
+			session.room = map.laser_weapon_armory
+			return render.show_room(room=session.room)
+
+		elif form.action == "0132":
+			session.room = map.the_bridge
+			return render.show_room(room=session.room)	
+
+		else:
+			return render.you_died()
 
 		# web.seeother("/game")
 
