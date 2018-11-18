@@ -7,7 +7,6 @@ urls = (
 	'/', 'Index',
 )
 
-
 ## Run this in terminal before trying to run the game:
 #export PYTHONPATH=$PYTHONPATH:.
 
@@ -37,7 +36,6 @@ class Index(object):
 class GameEngine(object):
 	
 	def GET(self):
-		# render.show_room()
 
 		session.room = map.START
 
@@ -48,13 +46,21 @@ class GameEngine(object):
 			return render.you_died()
 
 	def POST(self):
-		form = web.input(action="Ghello")
+		form = web.input(action=None)
 
-		# there is a bug here, can you fix it?
-		if session.room and form.action:
-			session.room = session.room.go(form.action)
+		# session.room = map.laser_weapon_armory
+		# render.show_room(room=session.room)
 
-		web.seeother("/game")
+		## there is a bug here, can you fix it?
+
+		if form.action == "tell a joke":
+			print "print this"
+			session.room = map.START
+			render.show_room(room=session.room)
+		# else:
+		# 	render.you_died()
+
+		# web.seeother("/game")
 
 
 if __name__=="__main__":
