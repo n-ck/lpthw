@@ -19,9 +19,10 @@ def test_index():
 	# make sure default values work for the form
 	resp = app.request("/game", method="POST")
 	# print "test 3 %s" % resp
-	assert_response(resp, contains="room")
+	assert_response(resp, contains=None)
 
 	## test that we get expected values
-	# data = {'data': 'Ghello'}
-	# resp = app.request("/game", method="POST", data=data)
-	# assert_response(resp, contains="Ghello")
+	data = "shoot!"
+	resp = app.request("/game", method="POST", data=data)
+	# print resp.data
+	assert_response(resp, contains="You Died!")

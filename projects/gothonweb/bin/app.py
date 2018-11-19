@@ -1,9 +1,11 @@
 import web
 from gothonweb import map
-
+import pickle
+import base64
 
 urls = (
 	'/game', 'GameEngine',
+	'/the_end', 'GameEngine',
 	'/', 'Index',
 )
 
@@ -28,6 +30,7 @@ class Index(object):
 	def GET(self):
 
 		# this is used to "setup" the session with starting values
+		## ads the map.START room (central_corridor) to the session dictionairy
 		session.room = map.START
 		web.seeother("/game")
 
@@ -51,16 +54,44 @@ class GameEngine(object):
 
 		## there is a bug here, can you fix it?
 
+		# print session.room
+
+		# for key,value in session.room.items():
+		# 	if value == generic_death:
+		# 		return render.show_room(session.room)
+		# 	else:
+		# 		session.room = map.value
+		# 		return render.show_room(room=session.room)
+
 		if form.action == "tell a joke":
 			print form.action
-			# for key, value in session.items():
-			# 	print value 
+			# print session.room 
+			# session.room = map.Room.paths
+			# print session.room.paths
+
+			## Attempt to print the current session:
+			# x = base64.b64decode(open("sessions/e5f756478a4a324b84deb8535015ea88b02d9629").read())
+			# y = pickle.loads(x)
+			# print y
+
 			session.room = map.laser_weapon_armory
 			return render.show_room(room=session.room)
 
 		elif form.action == "0132":
 			session.room = map.the_bridge
 			return render.show_room(room=session.room)	
+
+		elif form.action == "slowly place the bomb":
+			session.room = map.escape_pod
+			return render.show_room(room=session.room)	
+
+		elif form.action == "slowly place the bomb":
+			session.room = map.escape_pod
+			return render.show_room(room=session.room)	
+
+		elif form.action == "2":
+			session.room = map.the_end_winner
+			return render.the_end(room=session.room)	
 
 		else:
 			return render.you_died()

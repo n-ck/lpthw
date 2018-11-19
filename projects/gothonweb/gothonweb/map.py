@@ -126,4 +126,3 @@ central_corridor.add_paths({
 })
 
 START = central_corridor
-# START = Room("Central Corridor", "Description")
