@@ -94,7 +94,8 @@ class GameEngine(object):
 			return render.the_end(room=session.room)	
 
 		else:
-			return render.you_died()
+			session.room = map.generic_death
+			return render.you_died(room=session.room)
 
 		# web.seeother("/game")
 

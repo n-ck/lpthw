@@ -107,7 +107,11 @@ escape_pod.add_paths({
 	'*': the_end_loser
 })
 
-generic_death = Room("death", "You died.")
+generic_death = Room("death", {"central_corridor": "You're floating in space infinitely",
+							   "laser_weapon_aromory": "You're never unlocking a weapon, you die!",
+							   "the_bridge": "You fall of the bridge and crush your skull",
+							   "escape_pod": "The escape pod burns out completely, you're dead...",
+							   })
 
 the_bridge.add_paths({
 	'throw the bomb': generic_death,
