@@ -126,3 +126,20 @@ central_corridor.add_paths({
 })
 
 START = central_corridor
+
+
+
+## Final exam:
+# - Fix all the bugs I mention in the code, as well as bugs not mentioned
+#   - finish the generic_death endings (find the original endings and add back in)
+# 	- ???
+# - Improve all automated tests
+# + Make the HTML better
+# - Research logins and create a signup system for the application, so people
+#   can login and have high scores
+# - Complete the game map, make it as large and feature-complete as possible
+# - Give people a help system, that lets them ask what they can do at each room of the game
+# - Add any other features you can think of
+# - Create several maps and let people choose a game they want to run
+# - Use what you learned in Ex48 and Ex49 to create a better input processor (improve the grammar)
+
