@@ -49,31 +49,9 @@ class GameEngine(object):
 	def POST(self):
 		form = web.input(action=None)
 
-		# session.room = map.laser_weapon_armory
-		# render.show_room(room=session.room)
-
-		## there is a bug here, can you fix it?
-
-		# print session.room
-
-		# for key,value in session.room.items():
-		# 	if value == generic_death:
-		# 		return render.show_room(session.room)
-		# 	else:
-		# 		session.room = map.value
-		# 		return render.show_room(room=session.room)
+		web.config._session = session
 
 		if form.action == "tell a joke":
-			print form.action
-			# print session.room 
-			# session.room = map.Room.paths
-			# print session.room.paths
-
-			## Attempt to print the current session:
-			# x = base64.b64decode(open("sessions/e5f756478a4a324b84deb8535015ea88b02d9629").read())
-			# y = pickle.loads(x)
-			# print y
-
 			session.room = map.laser_weapon_armory
 			return render.show_room(room=session.room)
 
