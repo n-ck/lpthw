@@ -51,29 +51,49 @@ class GameEngine(object):
 
 		web.config._session = session
 
+		count = 0
+		flag = True
+
+		deathlist = {"central_corridor": "You're floating in space infinitely",
+					 "laser_weapon_aromory": "You're never unlocking a weapon, you die!",
+					 "the_bridge": "You fall of the bridge and crush your skull",
+					 "escape_pod": "The escape pod burns out completely, you're dead...",
+					}
+
+
+ 		# implement a while loop here?
+
 		if form.action == "tell a joke":
 			session.room = map.laser_weapon_armory
 			return render.show_room(room=session.room)
+			flag = False
 
 		elif form.action == "0132":
 			session.room = map.the_bridge
-			return render.show_room(room=session.room)	
+			return render.show_room(room=session.room)
+			flag = False
+
+		elif form.action == "slowly place the bomb":
+			session.room = map.escape_pod
+			return render.show_room(room=session.room)
+			flag = False
 
 		elif form.action == "slowly place the bomb":
 			session.room = map.escape_pod
 			return render.show_room(room=session.room)	
-
-		elif form.action == "slowly place the bomb":
-			session.room = map.escape_pod
-			return render.show_room(room=session.room)	
+			flag = False
 
 		elif form.action == "2":
 			session.room = map.the_end_winner
-			return render.the_end(room=session.room)	
+			return render.the_end(room=session.room)
+			flag = False
 
 		else:
-			session.room = map.generic_death
-			return render.you_died(room=session.room)
+			for key, value in deathlist:
+				if key == session.room:
+					return render.you_died(reason=value)
+			# session.room = map.generic_death
+			# return render.you_died(room=session.room)
 
 		# web.seeother("/game")
 
