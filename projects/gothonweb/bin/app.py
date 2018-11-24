@@ -18,7 +18,9 @@ app = web.application(urls, globals())
 if web.config.get('_sessions') is None:
 	store = web.session.DiskStore('sessions')
 	session = web.session.Session(app, store, 
-								  initializer={'room': None})
+								  initializer={'room': None,
+								               'count': 0,
+								               })
 	web.config._session = session
 else:
 	session = web.config._session
@@ -46,52 +48,73 @@ class GameEngine(object):
 			# why is this here? do you need it?
 			return render.you_died()
 
+		print session.room
+
 	def POST(self):
 		form = web.input(action=None)
 
 		web.config._session = session
 
-		count = 0
-		flag = True
+		# deathlist = {"central_corridor": "You're floating in space infinitely",
+		# 			 "laser_weapon_aromory": "You're never unlocking a weapon, you die!",
+		# 			 "the_bridge": "You fall of the bridge and crush your skull",
+		# 			 "escape_pod": "The escape pod burns out completely, you're dead...",
+		# 			}
 
-		deathlist = {"central_corridor": "You're floating in space infinitely",
-					 "laser_weapon_aromory": "You're never unlocking a weapon, you die!",
-					 "the_bridge": "You fall of the bridge and crush your skull",
-					 "escape_pod": "The escape pod burns out completely, you're dead...",
-					}
+ 	# 	correctanswers = {"laser_weapon_armory": "tell a joke", 
+ 	# 	 				  "the_bridge": "0132", 
+ 	# 	 				  "escape_pod": "slowly place the bomb", 
+ 	# 	 				  "the_end_winner": "2"
+ 	# 	 				  }
+
+		# flag = True
+
+ 	# 	while flag:
+
+		# 	if form.action == "tell a joke":
+		# 		session.room = map.laser_weapon_armory
+		# 		return render.show_room(room=session.room)
+		# 		print session.count
+		# 		flag = False
+
+		# 	elif session.count == 3:
+		# 		for x, y in deathlist.items():
+		# 			if key == x:
+		# 				return render.you_died(reason=y)
+		# 	else:
+		# 		session.count = session.count + 1
+		# 		session.room = map.central_corridor
+		# 		return render.show_room(room=session.room)
+		# 		flag = False	 				
 
 
- 		# implement a while loop here?
+		### Working code:
 
 		if form.action == "tell a joke":
 			session.room = map.laser_weapon_armory
+			# print session.room.name
 			return render.show_room(room=session.room)
-			flag = False
 
 		elif form.action == "0132":
 			session.room = map.the_bridge
 			return render.show_room(room=session.room)
-			flag = False
 
 		elif form.action == "slowly place the bomb":
 			session.room = map.escape_pod
 			return render.show_room(room=session.room)
-			flag = False
 
 		elif form.action == "slowly place the bomb":
 			session.room = map.escape_pod
 			return render.show_room(room=session.room)	
-			flag = False
 
 		elif form.action == "2":
 			session.room = map.the_end_winner
 			return render.the_end(room=session.room)
-			flag = False
 
 		else:
-			for key, value in deathlist:
-				if key == session.room:
-					return render.you_died(reason=value)
+			# for key, value in deathlist.items():
+			# 	if key == session.room:
+			return render.you_died()
 			# session.room = map.generic_death
 			# return render.you_died(room=session.room)
 
