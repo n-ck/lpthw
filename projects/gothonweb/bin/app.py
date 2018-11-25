@@ -19,6 +19,8 @@ if web.config.get('_sessions') is None:
 	store = web.session.DiskStore('sessions')
 	session = web.session.Session(app, store, 
 								  initializer={'room': None,
+								  			   'current_level': 'central_corridor',
+								  			   'points': 0,
 								               'count': 0,
 								               })
 	web.config._session = session
@@ -48,18 +50,21 @@ class GameEngine(object):
 			# why is this here? do you need it?
 			return render.you_died()
 
-		print session.room
+
 
 	def POST(self):
 		form = web.input(action=None)
 
 		web.config._session = session
 
-		# deathlist = {"central_corridor": "You're floating in space infinitely",
-		# 			 "laser_weapon_aromory": "You're never unlocking a weapon, you die!",
-		# 			 "the_bridge": "You fall of the bridge and crush your skull",
-		# 			 "escape_pod": "The escape pod burns out completely, you're dead...",
-		# 			}
+		session.current_level = "central_corridor"
+		# print str(session.count)
+
+		deathlist = {"central_corridor": "You're floating in space infinitely",
+					 "laser_weapon_aromory": "You're never unlocking a weapon, you die!",
+					 "the_bridge": "You fall of the bridge and crush your skull",
+					 "escape_pod": "The escape pod burns out completely, you're dead...",
+					}
 
  	# 	correctanswers = {"laser_weapon_armory": "tell a joke", 
  	# 	 				  "the_bridge": "0132", 
@@ -92,29 +97,53 @@ class GameEngine(object):
 
 		if form.action == "tell a joke":
 			session.room = map.laser_weapon_armory
-			# print session.room.name
+			# session.count += 1
+			session.current_level = "laser_weapon_armory"
+			print str(session.current_level)
 			return render.show_room(room=session.room)
 
 		elif form.action == "0132":
 			session.room = map.the_bridge
+			# session.count += 1
+			session.current_level = "the_bridge"
+			print str(session.current_level)
 			return render.show_room(room=session.room)
 
 		elif form.action == "slowly place the bomb":
 			session.room = map.escape_pod
+			# session.count += 1
+			session.current_level = "escape_pod"
+			print str(session.current_level)
 			return render.show_room(room=session.room)
-
-		elif form.action == "slowly place the bomb":
-			session.room = map.escape_pod
-			return render.show_room(room=session.room)	
 
 		elif form.action == "2":
 			session.room = map.the_end_winner
+			# session.count += 1
+			session.current_level = "the_end_winner"
+			print str(session.current_level)
 			return render.the_end(room=session.room)
 
 		else:
+			flag = True
+			while flag:
+				for key, value in deathlist.items():
+					if key == str(session.current_level):
+						reason = value
+						return render.you_died(dead=reason)
+						flag = False
+				# else:
+				# 	reason = "You died, bummer!"
+				# 	return render.you_died(dead=reason)
+
+			# if session.current_level == "central_corridor":
+			# 	reason = "You're floating in space infinitely"
+			# 	return render.you_died(dead=reason)
+
+
+
 			# for key, value in deathlist.items():
 			# 	if key == session.room:
-			return render.you_died()
+			# return render.you_died()
 			# session.room = map.generic_death
 			# return render.you_died(room=session.room)
 
