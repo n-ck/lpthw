@@ -4,12 +4,21 @@ class Room(object):
 		self.name = name
 		self.description = description
 		self.paths = {}
+		self.correct = []
+		self.incorrect = []
 
 	def go(self, direction):
 		return self.paths.get(direction, None)
 
 	def add_paths(self, paths):
 		self.paths.update(paths)
+
+	def add_correct(self, correct):
+		self.correct.append(correct)
+
+	def add_incorrect(self, incorrect):
+		self.incorrect.append(incorrect)
+
 
 
 central_corridor = Room("Central Corridor", 
@@ -113,6 +122,7 @@ generic_death = Room("death", {"central_corridor": "You're floating in space inf
 							   "escape_pod": "The escape pod burns out completely, you're dead...",
 							   })
 
+
 the_bridge.add_paths({
 	'throw the bomb': generic_death,
 	'slowly place the bomb': escape_pod
@@ -128,6 +138,19 @@ central_corridor.add_paths({
 	'dodge!': generic_death,
 	'tell a joke': laser_weapon_armory
 })
+
+
+central_corridor.add_correct('tell a joke')
+central_corridor.add_incorrect(['shoot!', 'dodge!'])
+
+laser_weapon_armory.add_correct('0132')
+laser_weapon_armory.add_incorrect('*')
+
+the_bridge.add_correct(['slowly place the bom'])
+the_bridge.add_incorrect(['throw the bomb'])
+
+
+
 
 START = central_corridor
 
