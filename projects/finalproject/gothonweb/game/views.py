@@ -9,3 +9,6 @@ from django.http import HttpResponse
 
 def index(request):
     return HttpResponse("Hello, world. You're at the game's index.") 
+
+class GamenEngine(object):
+	pass
