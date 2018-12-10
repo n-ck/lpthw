@@ -2,24 +2,20 @@
 
 {% block content %}
 
-<h1> $room.name </h1>
+<h1> {{ request.session.room }} </h1>
 
 <pre>
-$room.description
+{{ room.description }}
 </pre>
 
 <div class="paths">
 
 </div>
 
-$if room.name == "death":
-	<p><a href="/">Play Again?</a></p>
-$else:
-	<p>
-	<form action="/game" method="POST">
+	<form action="/room" method="POST">
 		<strong>Your answer:</strong><br />
-		<input type="text" name="action"> <input type="SUBMIT">
+		{{ form }}
+		<input type="submit" value="submit">
 	</form>
-	</p>
 
 {% endblock %}

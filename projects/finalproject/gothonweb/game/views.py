@@ -8,8 +8,6 @@ from .forms import RoomForm
 
 import map
 
-# Create your views here.
-
 
 def index(request):
     return HttpResponse("Hello, world. You're at the game's index.") 
@@ -20,7 +18,8 @@ class GameEngine(View):
 	def get(self, request):
 
 		# set a session value:
-		# request.session['room'] = map.START
+		request.session['room'] = "central corridor"
+
 		form = RoomForm()
 
 		context = {
@@ -37,6 +36,12 @@ class GameEngine(View):
 		context = {
 			'form': form,
 		}
+
+		if form.is_valid():
+			pass
+
+			# if form answer == "tell a joke":
+				
 
 		# web.config._session = session
 
