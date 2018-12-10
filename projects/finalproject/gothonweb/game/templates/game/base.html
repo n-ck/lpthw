@@ -1,1 +1,16 @@
-base
+<html>
+	<head>
+		<title>Foo</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static "game/style.css" %}" type="text/css">
+	</head>
+<body>
+
+	<div id="wrapper">
+
+	{% block content %}{% endblock %}
+
+	</div>
+
+</body>
+</html>

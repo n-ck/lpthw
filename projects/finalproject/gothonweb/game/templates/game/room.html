@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1> $room.name </h1>
+
+<pre>
+$room.description
+</pre>
+
+<div class="paths">
+
+</div>
+
+$if room.name == "death":
+	<p><a href="/">Play Again?</a></p>
+$else:
+	<p>
+	<form action="/game" method="POST">
+		<strong>Your answer:</strong><br />
+		<input type="text" name="action"> <input type="SUBMIT">
+	</form>
+	</p>
+
+{% endblock %}
