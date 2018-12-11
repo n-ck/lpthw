@@ -24,6 +24,8 @@ class GameEngine(View):
 
 		context = {
 			'form': form,
+			'room': map.central_corridor.name,
+			'desc': map.central_corridor.description,
 		}
 
 		return render(request, 'room.html', context)
@@ -31,74 +33,60 @@ class GameEngine(View):
 
 	def post(self, request):
 
-		form = RoomForm()
+		form = RoomForm(request.POST)
 
 		context = {
 			'form': form,
+			'room': "",
+			'desc': None,
 		}
 
+		context['room'] = request.session['room']
+
 		if form.is_valid():
-			pass
+			answer = form.cleaned_data['answer']
 
-			# if form answer == "tell a joke":
-				
+			if answer == 'tell a joke':
+				request.session['room'] = "laser_weapon_armory"
+				context["room"] = map.laser_weapon_armory.name
+				context["desc"] = map.laser_weapon_armory.description
+				return render(request, 'room.html', context)
 
-		# web.config._session = session
+			elif answer == "0132":
+				request.session['room'] = "the_bridge"
+				context["room"] = map.the_bridge.name
+				context["desc"] = map.the_bridge.description
+				return render(request, 'room.html', context)		
 
-		# session.current_level = "central_corridor"
+			elif answer == "slowly place the bomb":
+				request.session['room'] = "escape_pod"
+				context["room"] = map.escape_pod.name
+				context["desc"] = map.escape_pod.description
+				return render(request, 'room.html', context)
 
-		# if form.action == "tell a joke":
-		# 	session.room = map.laser_weapon_armory
-		# 	# session.count += 1
-		# 	session.current_level = "laser_weapon_armory"
-		# 	print str(session.current_level)
-		# 	return render.show_room(room=session.room)
+			elif answer == "2":
+				request.session['room'] = "the_end_winner"
+				context["room"] = map.the_end_winner.name
+				context["desc"] = map.the_end_winner.description
+				return render(request, 'room.html', context)		
 
-		# elif form.action == "0132":
-		# 	session.room = map.the_bridge
-		# 	# session.count += 1
-		# 	session.current_level = "the_bridge"
-		# 	print str(session.current_level)
-		# 	return render.show_room(room=session.room)
-
-		# elif form.action == "slowly place the bomb":
-		# 	session.room = map.escape_pod
-		# 	# session.count += 1
-		# 	session.current_level = "escape_pod"
-		# 	print str(session.current_level)
-		# 	return render.show_room(room=session.room)
-
-		# elif form.action == "2":
-		# 	session.room = map.the_end_winner
-		# 	# session.count += 1
-		# 	session.current_level = "the_end_winner"
-		# 	print str(session.current_level)
-		# 	return render.the_end(room=session.room)
-
-		# else:
-		# 	flag = True
-		# 	while flag:
-		# 		for key, value in deathlist.items():
-		# 			if key == str(session.current_level):
-		# 				reason = value
-		# 				return render.you_died(dead=reason)
-		# 				flag = False
-		# 		else:
-		# 			reason = "You died, bummer!"
-		# 			return render.you_died(dead=reason)
-
-		# 	if session.current_level == "central_corridor":
-		# 		reason = "You're floating in space infinitely"
-		# 		return render.you_died(dead=reason)
-
-
-
-		# 	for key, value in deathlist.items():
-		# 		if key == session.room:
-		# 	return render.you_died()
-		# 	session.room = map.generic_death
-		# 	return render.you_died(room=session.room)
-
-		# web.seeother("/game")
+			else:
+				context["room"] = "you died"
+				return render(request, 'room.html', context)
 
 		return render(request, 'room.html', context)
+
+
+## Final exam:
+# - Fix all the bugs I mention in the code, as well as bugs not mentioned
+#   - finish the generic_death endings (find the original endings and add back in)
+# 	- ???
+# - Improve all automated tests
+# + Make the HTML better
+# - Research logins and create a signup system for the application, so people
+#   can login and have high scores
+# - Complete the game map, make it as large and feature-complete as possible
+# - Give people a help system, that lets them ask what they can do at each room of the game
+# - Add any other features you can think of
+# - Create several maps and let people choose a game they want to run
+# - Use what you learned in Ex48 and Ex49 to create a better input processor (improve the grammar)
