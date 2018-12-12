@@ -52,29 +52,47 @@ class GameEngine(View):
 				context["desc"] = map.laser_weapon_armory.description
 				return render(request, 'room.html', context)
 
-			elif answer == "0132":
-				request.session['room'] = "the_bridge"
-				context["room"] = map.the_bridge.name
-				context["desc"] = map.the_bridge.description
-				return render(request, 'room.html', context)		
-
-			elif answer == "slowly place the bomb":
-				request.session['room'] = "escape_pod"
-				context["room"] = map.escape_pod.name
-				context["desc"] = map.escape_pod.description
-				return render(request, 'room.html', context)
-
-			elif answer == "2":
-				request.session['room'] = "the_end_winner"
-				context["room"] = map.the_end_winner.name
-				context["desc"] = map.the_end_winner.description
-				return render(request, 'room.html', context)		
-
 			else:
-				context["room"] = "you died"
-				return render(request, 'room.html', context)
+				print request.session['room'] # prints central_corridor
+				context["room"] = "You're dead"
+				context["desc"] = "Try again"
 
-		return render(request, 'room.html', context)
+				return render(request, 'room.html', context)				
+
+			# elif answer == "0132":
+			# 	request.session['room'] = "the_bridge"
+			# 	context["room"] = map.the_bridge.name
+			# 	context["desc"] = map.the_bridge.description
+			# 	return render(request, 'room.html', context)		
+
+			# elif answer == "slowly place the bomb":
+			# 	request.session['room'] = "escape_pod"
+			# 	context["room"] = map.escape_pod.name
+			# 	context["desc"] = map.escape_pod.description
+			# 	return render(request, 'room.html', context)
+
+			# elif answer == "2":
+			# 	request.session['room'] = "the_end_winner"
+			# 	context["room"] = map.the_end_winner.name
+			# 	context["desc"] = map.the_end_winner.description
+			# 	return render(request, 'room.html', context)		
+
+			# else:
+			# 	current_room = request.session['room']
+
+			# 	for key, value in map.generic_death.description.items():
+
+			# 		if current_room == key:
+			# 			print current_room
+			# 			context["room"] = key
+			# 			context["desc"] = value
+			# 		else:
+			# 			context["room"] = "You're dead"
+			# 			context["desc"] = "Blablabla"
+
+			# 	return render(request, 'room.html', context)
+
+		# return render(request, 'room.html', context)
 
 
 ## Final exam:
