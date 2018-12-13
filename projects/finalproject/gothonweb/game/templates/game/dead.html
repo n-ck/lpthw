@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h1> {{ room }} </h1>
+
+{{ request.session.room }}
+
+<pre>
+{{ desc }}
+</pre>
+
+<div class="paths">
+
+</div>
+
+<a href="/centralcorridor">
+	<input type="submit" value="Start over">
+</a>
+
+{% endblock %}

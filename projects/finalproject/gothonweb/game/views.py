@@ -1,31 +1,77 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from .forms import RoomForm
 
 import map
 
+def start(request):
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the game's index.") 
+	context = {
+		'room': 'Start game',
+		'desc': 'Click the button below to start the game'
+	}
 
+	return render(request, 'start.html', context)	
 
-class GameEngine(View):
+class CentralCorridor(View):
 
 	def get(self, request):
-
-		# set a session value:
-		request.session['room'] = "central corridor"
-
+		request.session['room'] = "central_corridor"
 		form = RoomForm()
 
 		context = {
 			'form': form,
 			'room': map.central_corridor.name,
 			'desc': map.central_corridor.description,
+		}
+
+		return render(request, 'room.html', context)
+
+
+	def post(self, request):
+		form = RoomForm(request.POST)
+
+		context = {
+			'form': form,
+			'room': "",
+			'desc': None,
+		}
+
+		context['room'] = request.session['room']
+
+		if form.is_valid():
+			answer = form.cleaned_data['answer']
+
+			# if answer == 'tell a joke':
+			print "correct answer"
+			request.session['room'] = "laser_weapon_armory"
+			context["room"] = map.laser_weapon_armory.name
+			context["desc"] = map.laser_weapon_armory.description
+			obj = LaserWeaponArmory().objects.get()
+			return redirect(obj)
+
+			# else:
+			# 	context["room"] = "You're dead"
+			# 	context["desc"] = "Try again"
+			# 	return render(request, 'room.html', context)	
+
+
+class LaserWeaponArmory(View):
+
+	def get(self, request):
+
+		request.session['room'] = "laser_weapon_armory"
+
+		form = RoomForm(request.GET)
+
+		context = {
+			'form': form,
+			'room': map.laser_weapon_armory.name,
+			'desc': map.laser_weapon_armory.description,
 		}
 
 		return render(request, 'room.html', context)
@@ -46,18 +92,17 @@ class GameEngine(View):
 		if form.is_valid():
 			answer = form.cleaned_data['answer']
 
-			if answer == 'tell a joke':
+			if answer == '0132':
 				request.session['room'] = "laser_weapon_armory"
-				context["room"] = map.laser_weapon_armory.name
-				context["desc"] = map.laser_weapon_armory.description
+				context["room"] = map.the_bridge.name
+				context["desc"] = map.the_bridge.description
 				return render(request, 'room.html', context)
 
 			else:
-				print request.session['room'] # prints central_corridor
 				context["room"] = "You're dead"
 				context["desc"] = "Try again"
 
-				return render(request, 'room.html', context)				
+				return render(request, 'dead.html', context)				
 
 			# elif answer == "0132":
 			# 	request.session['room'] = "the_bridge"
