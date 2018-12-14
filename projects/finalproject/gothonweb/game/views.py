@@ -46,18 +46,18 @@ class CentralCorridor(View):
 		if form.is_valid():
 			answer = form.cleaned_data['answer']
 
-			# if answer == 'tell a joke':
-			print "correct answer"
-			request.session['room'] = "laser_weapon_armory"
-			context["room"] = map.laser_weapon_armory.name
-			context["desc"] = map.laser_weapon_armory.description
-			obj = LaserWeaponArmory().objects.get()
-			return redirect(obj)
+			if answer == 'tell a joke':
+				print "correct answer"
+				request.session['room'] = "laser_weapon_armory"
+				context["room"] = map.laser_weapon_armory.name
+				context["desc"] = map.laser_weapon_armory.description
+				obj = LaserWeaponArmory().get()
+				return redirect('laserweaponarmory')
 
-			# else:
-			# 	context["room"] = "You're dead"
-			# 	context["desc"] = "Try again"
-			# 	return render(request, 'room.html', context)	
+			else:
+				context["room"] = "You're dead"
+				context["desc"] = "Try again"
+				return render(request, 'room.html', context)	
 
 
 class LaserWeaponArmory(View):
@@ -99,7 +99,7 @@ class LaserWeaponArmory(View):
 				return render(request, 'room.html', context)
 
 			else:
-				context["room"] = "You're dead"
+				context["room"] = "Test 123"
 				context["desc"] = "Try again"
 
 				return render(request, 'dead.html', context)				
